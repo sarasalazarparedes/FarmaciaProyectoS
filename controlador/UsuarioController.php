@@ -12,9 +12,9 @@ if($_POST['funcion']=='buscar_usuario'){
             'cedula'=> $objeto->cedulau,
             'tipo'=> $objeto->nombre_tipo,
             'telefono'=> $objeto->telefonou,
-            'residenciaU'=> $objeto->residenciau,
-            'correoU'=> $objeto->correou,
-            'adicionalU'=> $objeto->adicionalu
+            'residenciau'=> $objeto->residenciau,
+            'correou'=> $objeto->correou,
+            'adicionalu'=> $objeto->adicionalu
         );
  
     }

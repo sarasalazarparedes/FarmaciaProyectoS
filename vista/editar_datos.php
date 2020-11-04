@@ -39,13 +39,14 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                             </div>
                             <input id="usuario"type="hidden" value="<?php echo $_SESSION['usuario']?>">
                                 <h3 id="nombreu" class="profile-username text-center text-success">Nombre</h3>
-                                <p id="apellidoU" class="text-muted text-center">Apellidos</p>
+                                <p id="apellidou" class="text-muted text-center">Apellidos</p>
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
-                                        <b style="color:#0B7300">Edad</b><a id="edad" class="float-right">12</a>
+                                        <b style="color:
+                                        ">Edad</b><a id="edad" class="float-right">12</a>
                                     </li>
                                     <li class="list-group-item">
-                                    <b style="color:#0B7300">Cedula</b><a id="cedulaU" class="float-right">12</a>
+                                    <b style="color:#0B7300">Cedula</b><a id="cedulau" class="float-right">12</a>
                                     </li>
                                     <li class="list-group-item">
 
@@ -67,16 +68,16 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                 <strong style="color: #0B7300 ">
                                   <i class=" fas fa-map-marked-alt mr-1"></i> Residencia
                                 </strong> 
-                                <p id="residenciaU" class="text-muted">5151561515</p>
+                                <p id="residenciau"class="text-muted">0</p>
                                 <strong style="color: #0B7300 ">
                                   <i class=" fas fa-at mr-1"></i> Correo
                                 </strong> 
-                                <p id="correoU"class="text-muted">5151561515</p>
+                                <p id="correou" class="text-muted">5151561515</p>
                                 <strong style="color: #0B7300 ">
                                   <i class=" fas fa-pencil-alt mr-1"></i> Informacion Adicional
                                 </strong> 
 
-                                <p id="adicionalU"class="text-muted">5151561515</p>
+                                <p id="adicionalu" class="text-muted">5151561515</p>
                                 <button class="btn btn-block bg-gradient-danger">Editar</button>
                              </div>
                              <div class="card-footer">
@@ -100,23 +101,23 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                </div> 
 
                                <div class="form-group row ">
-                                  <label for="residencia" class="col-sm-2 col-form-label">Residencia</label>
+                                  <label for="residenciau" class="col-sm-2 col-form-label"></label>
                                   <div class="col-sm-10">
-                                     <input type="text" id="residencia" class="form-control">
+                                     <input type="text" id="residenciau" class="form-control">
                                  </div>
                                </div>  
 
                                <div class="form-group row ">
-                                  <label for="correo" class="col-sm-2 col-form-label">Correo</label>
+                                  <label for="correou" class="col-sm-2 col-form-label">Correo</label>
                                   <div class="col-sm-10">
-                                     <input type="text" id="correo" class="form-control">
+                                     <input type="text" id="s" class="form-control">
                                  </div>
                                </div>   
 
                                <div class="form-group row ">
-                                  <label for="adicional" class="col-sm-2 col-form-label">Informacion Adicional</label>
+                                  <label for="adicionalu" class="col-sm-2 col-form-label">Informacion Adicional</label>
                                   <div class="col-sm-10">
-                                     <textarea class="form-control" id="adicional" cols="30" rows="10"></textarea>
+                                     <textarea class="form-control" id="adicionalu" cols="30" rows="10"></textarea>
                                  </div>
                                </div>
                                <div class="form-group row">

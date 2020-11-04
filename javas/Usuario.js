@@ -6,7 +6,7 @@ $(document).ready(function () {
         funcion='buscar_usuario';
         $.post('../controlador/UsuarioController.php',{dato,funcion},(response)=>{
            //console.log(typeof response);
-           //console.log(response);
+           console.log(response);
 
             let nombre='';
             let apellido='';
@@ -14,9 +14,9 @@ $(document).ready(function () {
             let cedula='';
             let tipo='';
             let telefono='';
-            let residencia='';
-            let correo='';
-            let adicional='';
+            let residenciau='';
+            let correou='';
+            let adicionalu='';
             //const usu = JSON.parse(response);
             const usu = JSON.parse(response);
             //<--console.log(typeof response);
@@ -26,11 +26,20 @@ $(document).ready(function () {
             cedula+=`${usu.cedula}`;
             tipo+=`${usu.tipo}`;
             telefono+=`${usu.telefono}`;
-            residencia+=`${usu.residencia}`;
-            correo+=`${usu.correo}`;
-            adicional+=`${usu.adicional}`;
+            residenciau+=`${usu.residenciau}`;
+            correou+=`${usu.correou}`;
+            adicionalu+=`${usu.adicionalu}`;
             $('#nombreu').html(nombre);
-            console.log(usu.nombre);
+            $('#apellidou').html(apellido);
+            $('#edad').html(edad);
+            $('#cedulau').html(cedula);
+            $('#tipousuario_idtipousuario').html(tipo);
+            $('#telefonoU').html(telefono);
+            $('#residenciau').html(residenciau);
+            $('#correou').html(correou);
+            $('#adicionalu').html(adicionalu);
+
+            
 
         }) 
     }   
