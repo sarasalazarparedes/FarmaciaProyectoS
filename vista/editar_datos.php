@@ -110,14 +110,14 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                <div class="form-group row ">
                                   <label for="correou" class="col-sm-2 col-form-label">Correo</label>
                                   <div class="col-sm-10">
-                                     <input type="text" id="s" class="form-control">
+                                     <input type="text" id="corre" class="form-control">
                                  </div>
                                </div>   
 
                                <div class="form-group row ">
                                   <label for="adicionalu" class="col-sm-2 col-form-label">Informacion Adicional</label>
                                   <div class="col-sm-10">
-                                     <textarea class="form-control" id="adicionalu" cols="30" rows="10"></textarea>
+                                     <textarea class="form-control" id="adicional" cols="30" rows="10"></textarea>
                                  </div>
                                </div>
                                <div class="form-group row">

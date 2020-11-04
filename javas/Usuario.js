@@ -53,12 +53,12 @@ $(document).ready(function () {
             const usu = JSON.parse(response);
               $('#telefono').val(usu.telefono);
               $('#residenci').val(usu.residenciau);
-              $('#correou').val(usu.correou);
-              $('#adicionalu').val(usu.adicionalu);
+              $('#corre').val(usu.correou);
+              $('#adicional').val(usu.adicionalu);
 
-              console.log(usu.residenciau);
-              console.log(usu.correou);
-              console.log(usu.adicionalu);
+              //console.log(usu.residenciau);
+              //console.log(usu.correou);
+              //console.log(usu.adicionalu);
               //console.log('#residenciau');
             
         })
