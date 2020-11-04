@@ -5,8 +5,8 @@ $(document).ready(function () {
     function buscar_usuario(dato) {
         funcion='buscar_usuario';
         $.post('../controlador/UsuarioController.php',{dato,funcion},(response)=>{
-           console.log(typeof response);
-           console.log(response);
+           //console.log(typeof response);
+           //console.log(response);
 
             let nombre='';
             let apellido='';
