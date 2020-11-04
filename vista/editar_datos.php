@@ -64,7 +64,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                 <strong style="color: #0B7300 ">
                                   <i class=" fas fa-phone mr-1"></i> Telefono
                                 </strong> 
-                                <p id="telefonoU" class="text-muted">5151561515</p>
+                                <p id="telefonou" class="text-muted">5151561515</p>
                                 <strong style="color: #0B7300 ">
                                   <i class=" fas fa-map-marked-alt mr-1"></i> Residencia
                                 </strong> 
@@ -78,7 +78,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                 </strong> 
 
                                 <p id="adicionalu" class="text-muted">5151561515</p>
-                                <button class="btn btn-block bg-gradient-danger">Editar</button>
+                                <button class="edit btn btn-block bg-gradient-danger">Editar</button>
                              </div>
                              <div class="card-footer">
                              <p class="text-muted">Click si desea editar</p>
@@ -101,9 +101,9 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                </div> 
 
                                <div class="form-group row ">
-                                  <label for="residenciau" class="col-sm-2 col-form-label"></label>
+                                  <label for="residenciau" class="col-sm-2 col-form-label">Residencia</label>
                                   <div class="col-sm-10">
-                                     <input type="text" id="residenciau" class="form-control">
+                                     <input type="text" id="residenci" class="form-control">
                                  </div>
                                </div>  
 
