@@ -44,11 +44,13 @@ if($_POST['funcion']=='capturar_datos'){
 if($_POST['funcion']=='editar_usuario'){
     $usuario=$_POST['usuario'];
     $telefono=$_POST['telefono'];
-    $residenci=$_POST['residenciau'];
-    $corre=$_POST['correou'];
-    $adicional=$_POST['adiconaliu'];
-    $us->editar($usuario,$telefono,$residenci,$corre, $adicional);
+    $residenciau=$_POST['residenciau'];
+    $correou=$_POST['correou'];
+    $adicionalu=$_POST['adicionalu'];
+    $us->editar($usuario,$telefono,$residenciau,$correou,$adicionalu);
     echo'editado';
+
+    echo $telefono;
     
 
 }

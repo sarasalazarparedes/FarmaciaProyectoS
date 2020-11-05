@@ -49,7 +49,7 @@ $(document).ready(function () {
         funcion='capturar_datos';
         edit=true;
         $.post('../controlador/UsuarioController.php',{funcion,usuario},(response)=>{
-            console.log(response);
+           // console.log(response);
             const usu = JSON.parse(response);
               $('#telefono').val(usu.telefono);
               $('#residenci').val(usu.residenciau);
@@ -64,7 +64,7 @@ $(document).ready(function () {
         })
     });
     //val captura dato
-    $('form-usuario').submit(e=>{
+    $('#form-usuario').submit(e=>{
         if(edit==true){
             let telefono=$('#telefono').val();
             let residenciau=$('#residenci').val();
@@ -72,17 +72,17 @@ $(document).ready(function () {
             let adicionalu=$('#adicional').val();
             funcion='editar_usuario';
             $.post('../controlador/UsuarioController.php',{usuario,funcion,telefono,residenciau,correou,adicionalu},(response)=>{
-////ver este error SARA
+                console.log(response);
                 if(response='editado'){
                     $('#editado').hide('slow');
                     $('#editado').show(1000);
                     $('#editado').hide(2000);
+                    console.log(telefono);
                     $('#form-usuario').trigger('reset');
-
                 }
                 edit=false;
                 buscar_usuario(usuario);
-
+               // console.log(telefono);
             })
 
         }else{
@@ -91,10 +91,14 @@ $(document).ready(function () {
             $('#noeditado').hide(2000);
            $('#form-usuario').trigger('reset');//campos del input en vacio
 
-
-
         }
         e.preventDefault();
+
+    });
+
+    $('form-pass').submit(e=>{
+        let oldpass=$('#oldpass').val();
+        let newpass=$('#newpass').val();
 
     })
 })

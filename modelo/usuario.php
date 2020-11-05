@@ -20,10 +20,11 @@ class Usuario{
         $this->objetos= $query->fetchall();
         return $this ->objetos;
     }
-    function editar($usuario,$telefono,$residencia,$correo,$adiciona){
-        $sql="UPDATE usuario SET telefonoU=:telefono,residenciaU=:residencia,correoU=:correou,adicionaU=:adicionalu where idusuario=:usuario";
+    function editar($usuario,$telefono,$residenciau,$correou,$adicionalu){
+        $sql="UPDATE usuario SET telefonoU=:telefono,residenciaU=:residenciau,correoU=:correou,adicionalU=:adicionalu where idusuario=:id";
         $query=$this->acceso->prepare($sql);
-        $query->execute(array(':usuario'=>$usuario,':telefono'=>$telefono,':residenciau'=>$residenciau,':correou'=>$correou,':adicionalu'=>$adicionalu));
+        $query->execute(array(':id'=>$usuario,':telefono'=>$telefono,':residenciau'=>$residenciau,':correou'=>$correou,':adicionalu'=>$adicionalu));
+        echo $query;
     }
 }
 

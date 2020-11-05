@@ -9,6 +9,55 @@ if($_SESSION['tipousuario_idtipousuario']==1){
   <?php
   include_once 'layouts/nav.php';
   ?>
+
+
+<!-- Modal -->
+<div class="modal fade" id="cambiocontra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cambiar Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+            <img src="../img/avatar.png"class="profile-user-img img-fluid img-circle">
+        </div>
+        <div class="text-center">
+           <b>
+             <?php
+                echo $_SESSION['nombreu']
+             ?>
+          </b>
+        </div>
+        <form id="form-pass">
+        <dib class="input-group mb-3">
+             <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+             </div>
+             <input id="oldpass"type="password" class="form-control" placeholder="Ingrese contrasena actual">
+        </dib> 
+
+        <dib class="input-group mb-3">
+             <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+             </div>
+             <input id="newpass"type="text" class="form-control" placeholder="Ingrese contrasena nueva">
+        </dib> 
+
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerra</button>
+        <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -42,8 +91,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                 <p id="apellidou" class="text-muted text-center">Apellidos</p>
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
-                                        <b style="color:
-                                        ">Edad</b><a id="edad" class="float-right">12</a>
+                                        <b style="color:#0B7300">Edad</b><a id="edad" class="float-right">12</a>
                                     </li>
                                     <li class="list-group-item">
                                     <b style="color:#0B7300">Cedula</b><a id="cedulau" class="float-right">12</a>
@@ -53,6 +101,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                         <b style="color:#0B7300">Tipo Usuario</b>
                                          <span id="tipousuario_idtipousuario" class="float-right badge badge-primary">Administrador</span>
                                     </li>
+                                    <button data-toggle="modal" data-target="#cambiocontra" type="button" class="btn btn-block btn-outline-warning btn-sm">Cambiar password</button>
                                 </ul>
                          </div>
                       </div>
