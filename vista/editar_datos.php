@@ -92,7 +92,15 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                        <h3 class="card-title">Editar datos personales</h3>
                        </div>
                        <div class="card-body">
-                           <form  class="form-horizontal">
+                       <div class="alert alert-success text-center" id="editado" style='display:none'>
+                       <span><i class="fas fa-check m-1"></i>Edtado</span>
+                       
+                       </div>
+                       <div class="alert alert-danger text-center" id="noeditado" style='display:none'>
+                       <span><i class="fas fa-times m-1"></i> no Edtado</span>
+                       
+                       </div>
+                           <form id='form-usuario' class="form-horizontal">
                                <div class="form-group row ">
                                   <label for="telefono" class="col-sm-2 col-form-label">Telefono</label>
                                   <div class="col-sm-10">

@@ -62,8 +62,39 @@ $(document).ready(function () {
               //console.log('#residenciau');
             
         })
-
-
-
     });
+    //val captura dato
+    $('form-usuario').submit(e=>{
+        if(edit==true){
+            let telefono=$('#telefono').val();
+            let residenciau=$('#residenci').val();
+            let correou=$('#corre').val();
+            let adicionalu=$('#adicional').val();
+            funcion='editar_usuario';
+            $.post('../controlador/UsuarioController.php',{usuario,funcion,telefono,residenciau,correou,adicionalu},(response)=>{
+////ver este error SARA
+                if(response='editado'){
+                    $('#editado').hide('slow');
+                    $('#editado').show(1000);
+                    $('#editado').hide(2000);
+                    $('#form-usuario').trigger('reset');
+
+                }
+                edit=false;
+                buscar_usuario(usuario);
+
+            })
+
+        }else{
+            $('#noeditado').hide('slow');
+            $('#noeditado').show(1000);
+            $('#noeditado').hide(2000);
+           $('#form-usuario').trigger('reset');//campos del input en vacio
+
+
+
+        }
+        e.preventDefault();
+
+    })
 })

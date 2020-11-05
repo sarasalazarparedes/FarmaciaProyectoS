@@ -41,4 +41,16 @@ if($_POST['funcion']=='capturar_datos'){
 
 }
 
+if($_POST['funcion']=='editar_usuario'){
+    $usuario=$_POST['usuario'];
+    $telefono=$_POST['telefono'];
+    $residenci=$_POST['residenciau'];
+    $corre=$_POST['correou'];
+    $adicional=$_POST['adiconaliu'];
+    $us->editar($usuario,$telefono,$residenci,$corre, $adicional);
+    echo'editado';
+    
+
+}
+
 ?>
