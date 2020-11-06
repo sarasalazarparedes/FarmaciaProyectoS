@@ -27,7 +27,7 @@ class Usuario{
         echo $query;
     }
     function cambiar_contra($usuario,$oldpass,$newpass){
-        $sql="SELECT * FROM usuario where idusuario=:id and contra:=oldpass";
+        $sql="SELECT * FROM usuario where idusuario=:id and contra=:oldpass";
         $query=$this->acceso->prepare($sql);
         $query->execute(array(':id'=>$usuario,':oldpass'=>$oldpass));
         $this->objetos = $query->fetchall();

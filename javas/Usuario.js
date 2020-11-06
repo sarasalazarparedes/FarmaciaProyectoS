@@ -103,10 +103,10 @@ $(document).ready(function () {
         let newpass=$('#newpass').val();
         funcion='cambiar_contra';
         $.post('../controlador/UsuarioController.php',{usuario,funcion,oldpass,newpass},(response)=>{
-            console.log(response);
+            //console.log(response);
             
             
-           // console.log(telefono);
+           
         })
 
         e.preventDefault();
