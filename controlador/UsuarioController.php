@@ -49,9 +49,17 @@ if($_POST['funcion']=='editar_usuario'){
     $adicionalu=$_POST['adicionalu'];
     $us->editar($usuario,$telefono,$residenciau,$correou,$adicionalu);
     echo'editado';
+}
 
-    echo $telefono;
+if($_POST['funcion']=='cambiar_contra'){
+    $usuario=$_POST['usuario'];
+    $oldpass=$_POST['oldpass'];
+    $newpass=$_POST['newpass'];
+    $us->cambiar_contra($usuario,$oldpass,$newpass);
     
+    echo'editado';
+
+
 
 }
 

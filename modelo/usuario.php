@@ -26,6 +26,20 @@ class Usuario{
         $query->execute(array(':id'=>$usuario,':telefono'=>$telefono,':residenciau'=>$residenciau,':correou'=>$correou,':adicionalu'=>$adicionalu));
         echo $query;
     }
+    function cambiar_contra($usuario,$oldpass,$newpass){
+        $sql="SELECT * FROM usuario where idusuario=:id and contra:=oldpass";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$usuario,':oldpass'=>$oldpass));
+        $this->objetos = $query->fetchall();
+        if(!empty($this->objetos)){
+            $sql="UPDATE usuario SET contra:=newpass where idusuario=:id ";
+            $query=$this->acceso->prepare($sql);
+            $query->execute(array(':id'=>$usuario,':newpass'=>$newpass));
+            echo 'update';
+        }else{
+            echo 'Noupdate';
+        }
+    }
 }
 
 

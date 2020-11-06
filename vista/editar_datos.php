@@ -46,14 +46,12 @@ if($_SESSION['tipousuario_idtipousuario']==1){
              </div>
              <input id="newpass"type="text" class="form-control" placeholder="Ingrese contrasena nueva">
         </dib> 
-
-
-
-        </form>
+      
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerra</button>
         <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+        </form>
       </div>
     </div>
   </div>

@@ -6,8 +6,8 @@ $(document).ready(function () {
     function buscar_usuario(dato) {
         funcion='buscar_usuario';
         $.post('../controlador/UsuarioController.php',{dato,funcion},(response)=>{
-           //console.log(typeof response);
-           //console.log(response);
+           console.log(typeof response);
+           console.log(response);
 
             let nombre='';
             let apellido='';
@@ -21,6 +21,8 @@ $(document).ready(function () {
             //const usu = JSON.parse(response);
             const usu = JSON.parse(response);
             //<--console.log(typeof response);
+
+            console.log(typeof response);
             nombre+=`${usu.nombre}`;
             apellido+=`${usu.apellido}`;
             edad+=`${usu.edad}`;
@@ -96,9 +98,25 @@ $(document).ready(function () {
 
     });
 
-    $('form-pass').submit(e=>{
+    $('#form-pass').submit(e=>{
         let oldpass=$('#oldpass').val();
         let newpass=$('#newpass').val();
+        funcion='cambiar_contra';
+        $.post('../controlador/UsuarioController.php',{usuario,funcion,oldpass,newpass},(response)=>{
+            console.log(response);
+            
+            
+           // console.log(telefono);
+        })
+
+        e.preventDefault();
+       
 
     })
+
+    
+
+
+
+    
 })
