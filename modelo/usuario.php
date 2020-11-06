@@ -32,12 +32,12 @@ class Usuario{
         $query->execute(array(':id'=>$usuario,':oldpass'=>$oldpass));
         $this->objetos = $query->fetchall();
         if(!empty($this->objetos)){
-            $sql="UPDATE usuario SET contra:=newpass where idusuario=:id ";
+            $sql="UPDATE usuario SET contra=:newpass where idusuario=:id ";
             $query=$this->acceso->prepare($sql);
             $query->execute(array(':id'=>$usuario,':newpass'=>$newpass));
             echo 'update';
         }else{
-            echo 'Noupdate';
+            echo 'noupdate';
         }
     }
 }
