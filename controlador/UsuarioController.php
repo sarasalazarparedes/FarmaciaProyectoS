@@ -1,14 +1,20 @@
 <?php
 include_once '../modelo/usuario.php';
 $us = new Usuario();
+session_start();
+$usuario=$_SESSION['usuario'];
 if($_POST['funcion']=='buscar_usuario'){
     $json=array();
+    $fecha_actual = new DateTime();
     $us->obtener_datos($_POST['dato']);
     foreach ($us->objetos as $objeto ) {
+        $nacimiento = new DateTime($objeto->edad);
+        $edad = $nacimiento->diff($fecha_actual);
+        $edad_years = $edad->y;
         $json[]=array(
             'nombre'=> $objeto->nombreu,
             'apellido'=> $objeto->apellidou,
-            'edad'=> $objeto->edad,
+            'edad'=> $edad_years,
             'cedula'=> $objeto->cedulau,
             'tipo'=> $objeto->nombre_tipo,
             'telefono'=> $objeto->telefonou,
@@ -58,8 +64,20 @@ if($_POST['funcion']=='cambiar_contra'){
     $us->cambiar_contra($usuario,$oldpass,$newpass);
     
     echo'editado';
+}
+
+if($_POST['funcion']=='cambiar_foto'){
+    if(($_FILES['photo']['type']=='image/jpeg')||($_FILES['photo']['type']=='image/png')||($_FILES['photo']['type']=='image/gif')){
+        $nombre=uniqid().'-'.$_FILES['photo']['name'];
+         //echo $nombre;
+        $ruta='../img/'.$nombre;
+         move_uploaded_file($_FILES['photo']['tmp_name'],$ruta);
+        $us->cambiar_foto($usuario,$nombre);
+    }else{
 
 
+    }
+    
 
 }
 

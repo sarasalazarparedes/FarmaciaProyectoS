@@ -41,20 +41,62 @@ if($_SESSION['tipousuario_idtipousuario']==1){
      </div>
 
         <form id="form-pass">
-        <dib class="input-group mb-3">
+        <div class="input-group mb-3">
              <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
              </div>
              <input id="oldpass"type="password" class="form-control" placeholder="Ingrese contrasena actual">
-        </dib> 
+        </div> 
 
-        <dib class="input-group mb-3">
+        <div class="input-group mb-3">
              <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
              </div>
              <input id="newpass"type="text" class="form-control" placeholder="Ingrese contrasena nueva">
-        </dib> 
+        </div> 
       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerra</button>
+        <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="cambiophoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cambiar foto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+            <img src="../img/avatar.png"class="profile-user-img img-fluid img-circle">
+        </div>
+        <div class="text-center">
+           <b>
+             <?php
+                echo $_SESSION['nombreu']
+             ?>
+          </b>
+     </div> 
+
+     <div class="alert alert-success text-center" id="update" style='display:none'>
+           <span><i class="fas fa-check m-1"></i>Se cambio el password Exitosamente</span>
+     </div>
+      <div class="alert alert-danger text-center" id="noupdate" style='display:none'>
+            <span><i class="fas fa-times m-1"></i> El password no logro modifiarse</span>
+     </div>
+
+        <form id="form-photo"entype="multipart/form-data">
+        <div class="input-group mb-3 ml-5 mt-2">
+             <input type="file" name="photo" class="input-group">  
+             <input type="hidden" name="funcion" value="cambiar_foto">  
+        </div> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerra</button>
@@ -92,6 +134,11 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                             <div class="text-center">
                                 <img src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
                             </div>
+                            <div class="text-center mt-1">
+                               <button type='button' data-toggle="modal" data-target="#cambiophoto"class="btn btn-primary btn-sm">Cambiar icono </button>
+                            
+                            </div>
+
                             <input id="usuario"type="hidden" value="<?php echo $_SESSION['usuario']?>">
                                 <h3 id="nombreu" class="profile-username text-center text-success">Nombre</h3>
                                 <p id="apellidou" class="text-muted text-center">Apellidos</p>

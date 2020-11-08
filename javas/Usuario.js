@@ -114,19 +114,27 @@ $(document).ready(function () {
                 $('#noupdate').hide('slow');
                 $('#noupdate').show(1000);
                 $('#noupdate').hide(2000);
-                $('#form-pass').trigger('reset');
-
+                $('#form-pass').trigger('reset')
 
             }
-            
-            
-            
-           
         })
 
         e.preventDefault();
-       
+    })
+    $('#form-photo').submit(e=>{
+        let formData = new FormData($('#form-photo')[0]);
+        $.ajax({
+            url:'../controlador/UsuarioController.php',
+            type:'POST',
+            data:formData,
+            cache:false,
+            processData:false,
+            contentType:false
+        }).done(function(response){
+            console.log(response);
 
+        });
+        e.preventDefault();
     })
 
     

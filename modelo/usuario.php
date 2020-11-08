@@ -40,6 +40,20 @@ class Usuario{
             echo 'noupdate';
         }
     }
+    function cambiar_foto($usuario,$nombre){
+        $sql="SELECT * FROM usuario where idusuario=:id and contra=:oldpass";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$usuario,':oldpass'=>$oldpass));
+        $this->objetos = $query->fetchall();
+        if(!empty($this->objetos)){
+            $sql="UPDATE usuario SET contra=:newpass where idusuario=:id ";
+            $query=$this->acceso->prepare($sql);
+            $query->execute(array(':id'=>$usuario,':newpass'=>$newpass));
+            echo 'update';
+        }else{
+            echo 'noupdate';
+        }
+    }
 }
 
 
