@@ -11,7 +11,28 @@ if($_SESSION['tipousuario_idtipousuario']==1){
   <?php
   include_once 'layouts/nav.php';
   ?>
-  <div class="modal fade" id="crearlaboratorio" tabindex="-1" role="dialog" aria-labelledby=></div>
+  <div class="modal fade" id="crearlaboratorio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidder="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Crear Laboratorio</h3>
+                        <button data-dismiss="modal" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                    </div>
+                </div>
+            
+            
+            
+            </div>
+    
+        </div>
+   </div>
+  
+  </div>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
