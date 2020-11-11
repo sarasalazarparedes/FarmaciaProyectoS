@@ -41,6 +41,10 @@ $(document).ready(function () {
             $('#residenciau').html(residenciau);
             $('#correou').html(correou);
             $('#adicionalu').html(adicionalu);
+            $('#avatar2').attr('src',usu.avatar);
+            $('#avatar1').attr('src',usu.avatar);
+            $('#avatar3').attr('src',usu.avatar);
+            $('#avatar4').attr('src',usu.avatar);
 
             
 
@@ -114,7 +118,7 @@ $(document).ready(function () {
                 $('#noupdate').hide('slow');
                 $('#noupdate').show(1000);
                 $('#noupdate').hide(2000);
-                $('#form-pass').trigger('reset')
+                $('#form-pass').trigger('reset');
 
             }
         })
@@ -131,7 +135,26 @@ $(document).ready(function () {
             processData:false,
             contentType:false
         }).done(function(response){
-            console.log(response);
+            /*console.log(response);*/
+            const json = JSON.parse(response);
+            if(json.alert=='edit'){
+                $('#avatar1').attr('src',json.ruta);
+                $('#edit').hide('slow');
+                $('#edit').show(1000);
+                $('#edit').hide(2000);
+                $('#form-photo').trigger('reset');
+                buscar_usuario(usuario);
+               
+
+            }else{
+                $('#noedit').hide('slow');
+                $('#noedit').show(1000);
+                $('#noedit').hide(2000);
+                $('#form-photo').trigger('reset');
+
+            }
+          
+            
 
         });
         e.preventDefault();

@@ -20,10 +20,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
+        <a href="../../index3.html" class="nav-link"></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="nav-link"></a>
       </li>
     </ul>
 
@@ -51,7 +51,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../img/avatar.png" class="img-circle elevation-2" alt="User Image">
+          <img id="avatar4"src="../img/avatar.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">
@@ -68,10 +68,18 @@
                with font-awesome or any other icon font library -->
          <li class="nav-header">Usuario</li>
          <li class="nav-item">
-           <a href="../vista/editar_datos.php" class="nav-link">
+           <a href="editar_datos.php" class="nav-link">
              <i class="nav-icon fas fa-user-cog"></i>
              <p>
                Editar
+             </p>
+           </a>
+        </li>
+        <li class="nav-item">
+           <a href="adm_usuario.php" class="nav-link">
+             <i class="nav-icon fas fa-users"></i>
+             <p>
+               Gestion Usuario
              </p>
            </a>
         </li>

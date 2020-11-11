@@ -41,18 +41,16 @@ class Usuario{
         }
     }
     function cambiar_foto($usuario,$nombre){
-        $sql="SELECT * FROM usuario where idusuario=:id and contra=:oldpass";
+        $sql="SELECT avatar FROM usuario where idusuario=:id ";
         $query=$this->acceso->prepare($sql);
-        $query->execute(array(':id'=>$usuario,':oldpass'=>$oldpass));
+        $query->execute(array(':id'=>$usuario));
         $this->objetos = $query->fetchall();
-        if(!empty($this->objetos)){
-            $sql="UPDATE usuario SET contra=:newpass where idusuario=:id ";
+        
+            $sql="UPDATE usuario SET avatar=:nombre where idusuario=:id ";
             $query=$this->acceso->prepare($sql);
-            $query->execute(array(':id'=>$usuario,':newpass'=>$newpass));
-            echo 'update';
-        }else{
-            echo 'noupdate';
-        }
+            $query->execute(array(':id'=>$usuario,':nombre'=>$nombre));
+        return $this->objetos;
+        
     }
 }
 

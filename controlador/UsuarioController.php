@@ -20,7 +20,8 @@ if($_POST['funcion']=='buscar_usuario'){
             'telefono'=> $objeto->telefonou,
             'residenciau'=> $objeto->residenciau,
             'correou'=> $objeto->correou,
-            'adicionalu'=> $objeto->adicionalu
+            'adicionalu'=> $objeto->adicionalu,
+            'avatar'=>'../img/'.$objeto->avatar
         );
  
     }
@@ -73,7 +74,26 @@ if($_POST['funcion']=='cambiar_foto'){
         $ruta='../img/'.$nombre;
          move_uploaded_file($_FILES['photo']['tmp_name'],$ruta);
         $us->cambiar_foto($usuario,$nombre);
+        foreach ($us->objetos as $objeto) {
+            unlink('../img/'.$objeto->avatar);
+        }
+        $json= array();
+        $json[]=array(
+            'ruta'=>$ruta,
+            'alert'=>'edit'
+
+        );
+        $jsonstring = json_encode($json[0]);
+    echo $jsonstring;
     }else{
+        $json= array();
+        $json[]=array(
+            'alert'=>'noedit'
+        );
+        $jsonstring = json_encode($json[0]);
+        echo $jsonstring;
+
+
 
 
     }
