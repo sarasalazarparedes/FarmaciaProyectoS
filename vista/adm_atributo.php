@@ -17,21 +17,98 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                 <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">Crear Laboratorio</h3>
-                        <button data-dismiss="modal" aria-label="close">
+                        <button data-dismiss="modal" aria-label="close" class="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="card-body">
+                        <div class="alert alert-success text-center" id="add-laboratorio" style='display:none;'>
+                            <span><i class="fas fa-check m-1"></i>Se agrego ocrectamente</span> 
+                        </div>
+                    <div class="alert alert-danger text-center" id="noadd-laboratorio" style='display:none;'>
+                        <span><i class="fas fa-check m-1"></i>El laboratorio ya existe</span> 
+                    </div>
+                    <form id="form-crear-laboratorio">
+                        <div class="form-group">
+                            <label for="nombre-laboratorio">Nombre</label>
+                            <input id="nombre-laboratorio" type="text" class="form-control" placeholder="Ingrese nombre" required>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                    <button type="submit" class="btn bg-gradient-primary float-right m-1">Crear</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-outline-secondary  float-right m-1">Close</button>
+                    </form>
                     </div>
                 </div>
-            
-            
-            
-            </div>
     
+            </div>
         </div>
-   </div>
-  
+  </div>
+  <div class="modal fade" id="creartipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidder="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Crear LTipo</h3>
+                        <button data-dismiss="modal" aria-label="close" class="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-succes text-center" id="add" style='display:none;'>
+                            <span><i class="fas fa-check m-1"></i>Se agrego ocrectamente</span> 
+                        </div>
+                    <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
+                        <span><i class="fas fa-check m-1"></i>El DNI ya esxite</span> 
+                    </div>
+                    <form id="form-crear-tipo">
+                        <div class="form-group">
+                            <label for="nombre-tipo">Nombre</label>
+                            <input id="nombre-tipo" type="text" class="form-control" placeholder="Ingrese nombre" required>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                    <button type="submit" class="btn bg-gradient-primary float-right m-1">Crear</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-outline-secondary  float-right m-1">Close</button>
+                    </form>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+  </div>
+  <div class="modal fade" id="crearpresentacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidder="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Crear Presentacion</h3>
+                        <button data-dismiss="modal" aria-label="close" class="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-succes text-center" id="add" style='display:none;'>
+                            <span><i class="fas fa-check m-1"></i>Se agrego ocrectamente</span> 
+                        </div>
+                    <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
+                        <span><i class="fas fa-check m-1"></i>El DNI ya esxite</span> 
+                    </div>
+                    <form id="form-crear-presentacion">
+                        <div class="form-group">
+                            <label for="nombre-presentacion">Nombre</label>
+                            <input id="nombre-presentacion" type="text" class="form-control" placeholder="Ingrese nombre" required>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                    <button type="submit" class="btn bg-gradient-primary float-right m-1">Crear</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-outline-secondary  float-right m-1">Close</button>
+                    </form>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
   </div>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -69,7 +146,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                 <div class="tab-pane active"id='laboratorio' >
                                     <div class="card card-success">
                                         <div class="card-header">
-                                            <div class="card-title">Buscar laboratorio <button type="button" data-togle="modal" data-target="#crearlaboratorio" class="btn bg-gradient-primary btn-sm m-2">Crear Laboratorio</button></div>
+                                            <div class="card-title">Buscar laboratorio <button type="button" data-toggle="modal" data-target="#crearlaboratorio" class="btn bg-gradient-primary btn-sm m-2">Crear Laboratorio</button></div>
                                             <div class="input-group">
                                                 <input id="buscar-laboratorio" type="text" class="form-control float-left" placeholder="Ingrese nombre">
                                                 <div class="input-group-append">
@@ -85,7 +162,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                 <div class="tab-pane" id='tipo'>
                                     <div class="card card-success">
                                         <div class="card-header">
-                                            <div class="card-title">Buscar tipo<button type="button" data-togle="modal" data-target="#creartipo" class="btn bg-gradient-primary btn-sm m-2">Crear tipo</button></div>
+                                            <div class="card-title">Buscar tipo<button type="button" data-toggle="modal" data-target="#creartipo" class="btn bg-gradient-primary btn-sm m-2">Crear tipo</button></div>
                                             <div class="input-group">
                                                 <input id="buscar-tipo" type="text" class="form-control float-left" placeholder="Ingrese nombre">
                                                 <div class="input-group-append">
@@ -100,7 +177,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                 <div class="tab-pane" id='presentacion'>
                                     <div class="card card-success">
                                         <div class="card-header">
-                                            <div class="card-title">Buscar presentacion<button type="button" data-togle="modal" data-target="#crearpresentacion" class="btn bg-gradient-primary btn-sm m-2">Crear presentacion</button></div>
+                                            <div class="card-title">Buscar presentacion<button type="button" data-toggle="modal" data-target="#crearpresentacion" class="btn bg-gradient-primary btn-sm m-2">Crear presentacion</button></div>
                                             <div class="input-group">
                                                 <input id="buscar-presentacion" type="text" class="form-control float-left" placeholder="Ingrese nombre">
                                                 <div class="input-group-append">
