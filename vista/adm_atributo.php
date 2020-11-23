@@ -36,7 +36,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                     </div>
                     <div class="card-footer">
                     <button type="submit" class="btn bg-gradient-primary float-right m-1">Crear</button>
-                    <button type="button" data-dismiss="modal" class="btn btn-outline-secondary  float-right m-1">Close</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-outline-secondary  float-right m-1">Cerrar</button>
                     </form>
                     </div>
                 </div>

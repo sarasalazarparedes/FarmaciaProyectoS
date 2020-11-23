@@ -52,6 +52,28 @@ class Usuario{
         return $this->objetos;
         
     }
+    function buscar(){
+        if(!empty($_POST['consulta'])){
+             $consulta=$_POST['consulta'];
+             $sql="SELECT * FROM usuario JOIN tipoUsuario ON tipoUsuario_idtipoUsuario=idtipoUsuario where nombreu LIKE :consulta";
+             $query = $this->acceso->prepare($sql);
+             $query->execute(array(':consulta'=>"%$consulta%"));
+             $this->objetos = $query->fetchall();
+             return $this->objetos;
+            
+
+        }else{
+       
+            $sql="SELECT * FROM usuario JOIN tipoUsuario ON tipoUsuario_idtipoUsuario=idtipoUsuario WHERE nombreu OR nombreu LIKE '' ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute();
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+
+
+        }
+
+    }
 }
 
 

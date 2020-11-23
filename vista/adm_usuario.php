@@ -12,42 +12,50 @@ if($_SESSION['tipousuario_idtipousuario']==1){
 <div class="modal fade" id="crearusuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cambiar foto</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="text-center">
-            <img id="avatar1"src="../img/avatar.png"class="profile-user-img img-fluid img-circle">
-        </div>
-        <div class="text-center">
-           <b>
-             <?php
-                echo $_SESSION['nombreu']
-             ?>
-          </b>
-     </div> 
-
-     <div class="alert alert-success text-center" id="edit" style='display:none'>
-           <span><i class="fas fa-check m-1"></i>Se cambio la imagen Exitosamente</span>
+         <div class="card card-success">
+             <div class="card-header">
+                 <h3 class="card-title">Crear usuario</h3>
+                 <button data-dismiss="modal" aria-label="close" class="close">
+                    <span aria-hidden="true">&times;</span>
+                 
+                 </button>
+             </div>
+             <div class="card-body">
+                 <form id="form-crear">
+                     <div class="form-group">
+                         <label for="nombre">Nombres</label>
+                         <input id="nombre"type="text" class="form-control"placeholder="Ingrese nombre" required>
+                         
+                     </div>
+                     <div class="form-group">
+                         <label for="apellido">Apellidos</label>
+                         <input id="apellido"type="text" class="form-control"placeholder="Ingrese apellido" required>
+                         
+                     </div>
+                     <div class="form-group">
+                         <label for="edad">Nacimiento</label>
+                         <input id="edad"type="date" class="form-control"placeholder="Ingrese fecha de nacimiento" required>
+                         
+                     </div>
+                     <div class="form-group">
+                         <label for="dni">cedula Identidad</label>
+                         <input id="dni"type="text" class="form-control"placeholder="Ingrese cedula" required>
+                         
+                     </div>
+                     <div class="form-group">
+                         <label for="pass">Password</label>
+                         <input id="pass"type="password" class="form-control"placeholder="Ingrese password" required>
+                         
+                     </div>
+                     <div class="card-footer">
+                         <button type="submit"class="btn bg-gradient-purple float-right m-2">Guardar</button>
+                         <button type="button" data-dismiss="modal"class="btn bg-gradient-danger float-right m-2">Cerrar</button>
+                 </form>
+             </div>
+         </div>  
      </div>
-      <div class="alert alert-danger text-center" id="noedit" style='display:none'>
-            <span><i class="fas fa-times m-1"></i> La imagen no logro modifiarse</span>
-     </div>
 
-        <form id="form-photo"entype="multipart/form-data">
-        <div class="input-group mb-3 ml-5 mt-2">
-             <input type="file" name="photo" class="input-group">  
-             <input type="hidden" name="funcion" value="cambiar_foto">  
-        </div> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerra</button>
-        <button type="submit" class="btn bg-gradient-primary">Guardar</button>
-        </form>
-      </div>
+     
     </div>
   </div>
 </div>
@@ -71,6 +79,29 @@ if($_SESSION['tipousuario_idtipousuario']==1){
       </div><!-- /.container-fluid -->
     </section>
     <section>
+    <div class="container-fluid">
+        <div class="card card-success">
+            <div class="card-header">
+            <h3 class="card-title">Buscar Usuario</h3>
+            <div class="input-group">
+                <input type="text" id="buscar"class="form-control float-left" placeholder="Ingrese nombre de usuario">
+                <div class="input-group-append">
+                    <button class="btn btn-default"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            </div>
+            <div class="card-body">
+              <div id="usuarios" class="row d-flex align-items-lg-stretch">
+
+            
+              </div>
+            </div>
+            <div class="card-footer">
+               
+            
+            </div>
+        </div>
+    </div>
     
    </section>
 </div>
@@ -82,4 +113,4 @@ include_once 'layouts/footer.php';
     header ('Location: ../index.php');
 }
 ?>
-<script src="../javas/Usuario.js"></script>
+<script src="../javas/Gestion_usuario.js"></script>
