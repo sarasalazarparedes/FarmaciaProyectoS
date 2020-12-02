@@ -23,7 +23,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                     </div>
                     <div class="card-body">
                         <div class="alert alert-success text-center" id="add-laboratorio" style='display:none;'>
-                            <span><i class="fas fa-check m-1"></i>Se agrego ocrectamente</span> 
+                            <span><i class="fas fa-check m-1"></i>Se agrego correctamente</span> 
                         </div>
                     <div class="alert alert-danger text-center" id="noadd-laboratorio" style='display:none;'>
                         <span><i class="fas fa-check m-1"></i>El laboratorio ya existe</span> 
@@ -49,7 +49,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
             <div class="modal-content">
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">Crear LTipo</h3>
+                        <h3 class="card-title">Crear Tipo</h3>
                         <button data-dismiss="modal" aria-label="close" class="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -217,3 +217,4 @@ include_once 'layouts/footer.php';
     header ('Location: ../index.php');
 }
 ?>
+<script src="../javas/Laboratorio.js"></script>
