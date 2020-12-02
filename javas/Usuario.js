@@ -143,6 +143,7 @@ $(document).ready(function () {
                 $('#edit').show(1000);
                 $('#edit').hide(2000);
                 $('#form-photo').trigger('reset');
+                
                 buscar_usuario(usuario);
                
 

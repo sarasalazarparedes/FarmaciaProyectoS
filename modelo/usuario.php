@@ -64,7 +64,7 @@ class Usuario{
 
         }else{
        
-            $sql="SELECT * FROM usuario JOIN tipoUsuario ON tipoUsuario_idtipoUsuario=idtipoUsuario WHERE nombreu OR nombreu LIKE '' ";
+            $sql="SELECT * FROM usuario JOIN tipoUsuario ON tipoUsuario_idtipoUsuario=idtipoUsuario WHERE nombreu NOT LIKE '' ";
             $query = $this->acceso->prepare($sql);
             $query->execute();
             $this->objetos = $query->fetchall();
@@ -73,6 +73,23 @@ class Usuario{
 
         }
 
+    }
+    function crear($nombre,$apellido,$edad,$dni,$pass,$tipo,$avatar){
+        $sql="SELECT idusuario FROM usuario where cedulaU=:dni ";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':dni'=>$dni));
+        $this->objetos = $query->fetchall();
+        if(!empty($this->objetos)){
+            echo 'noadd';
+
+        }else{
+            $sql="INSERT INTO usuario(nombreU,apellidoU,edad,cedulaU,contra,tipoUsuario_idtipoUsuario,avatar) VALUES (:nombre,:apellido,:edad,:dni,:pass,:tipo,:avatar);";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':nombre'=>$nombre,':apellido'=>$apellido,':edad'=>$edad,':dni'=>$dni,':dni'=>$dni,':pass'=>$pass,':tipo'=>$tipo,':avatar'=>$avatar));
+            echo'add';
+
+        }
+        
     }
 }
 

@@ -104,6 +104,7 @@ if($_POST['funcion']=='buscar_usuarios_adm'){
         $edad = $nacimiento->diff($fecha_actual);
         $edad_years = $edad->y;
         $json[]=array(
+            
             'nombre'=> $objeto->nombreu,
             'apellido'=> $objeto->apellidou,
             'edad'=> $edad_years,
@@ -113,7 +114,8 @@ if($_POST['funcion']=='buscar_usuarios_adm'){
             'residenciau'=> $objeto->residenciau,
             'correou'=> $objeto->correou,
             'adicionalu'=> $objeto->adicionalu,
-            'avatar'=>'../img/'.$objeto->avatar
+            'avatar'=>'../img/'.$objeto->avatar,
+            'tipo_us'=>$objeto->tipousuario_idtipousuario
         );
  
     }
@@ -121,5 +123,18 @@ if($_POST['funcion']=='buscar_usuarios_adm'){
     echo $jsonstring;
 
 }
+if($_POST['funcion']=='crear_usuario'){
+    $nombre=$_POST['nombre'];
+    $apellido=$_POST['apellido'];
+    $edad=$_POST['edad'];
+    $dni=$_POST['dni'];
+    $pass=$_POST['pass'];
+    $tipo=2;
+    $avatar='farmacias_default.jpeg';
+    $us->crear($nombre,$apellido,$edad,$dni,$pass,$tipo,$avatar);
+    
+
+}
+
 
 ?>
