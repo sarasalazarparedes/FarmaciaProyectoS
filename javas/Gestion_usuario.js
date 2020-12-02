@@ -133,9 +133,9 @@ $(document).ready(function(){
         let pass=$('#oldpass').val();
         let id_usuario=$('#id_user').val();
         funcion =$('#funcion').val();
-        //console.log(pass);
-        //console.log(id_usuario);
-        //console.log(funcion);
+        console.log(pass);
+        console.log(id_usuario);
+        console.log(funcion);
         $.post('../controlador/UsuarioController.php',{pass,id_usuario,funcion},(response)=>{
           if(response=='borrado'){
             $('#confirmado').hide('slow');
