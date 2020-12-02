@@ -13,7 +13,7 @@ $(document).ready(function(){
         let template ='';
         usuarios.forEach(us=>{
             template+=`
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+            <div usuarioid="${us.id}" class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
             <div class="card bg-light">
               <div class="card-header text-muted border-bottom-0">
                ${us.tipo}
@@ -116,6 +116,45 @@ $(document).ready(function(){
         });
         e.preventDefault();
 
+
+      });
+
+      $(document).on('click','.borrar-usuario',(e)=>{
+        const elemento= $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+        const id=$(elemento).attr('usuarioid');
+        //console.log(id);
+        funcion='borrar_usuario';
+        $('#id_user').val(id);
+        $('#funcion').val(funcion);
+
+
+      });
+      $('#form-confirmar').submit(e=>{
+        let pass=$('#oldpass').val();
+        let id_usuario=$('#id_user').val();
+        funcion =$('#funcion').val();
+        //console.log(pass);
+        //console.log(id_usuario);
+        //console.log(funcion);
+        $.post('../controlador/UsuarioController.php',{pass,id_usuario,funcion},(response)=>{
+          if(response=='borrado'){
+            $('#confirmado').hide('slow');
+            $('#confirmado').show(1000);
+            $('#confirmado').hide(2000);
+            $('#form-confirmar').trigger('reset');
+            
+  
+           }else{
+            $('#no').hide('slow');
+            $('#no').show(1000);
+            $('#no').hide(2000);
+            $('#form-confirmar').trigger('reset');
+  
+           }
+           buscar_datos();
+        });
+        e.preventDefault();
+        
 
       });
       

@@ -104,7 +104,7 @@ if($_POST['funcion']=='buscar_usuarios_adm'){
         $edad = $nacimiento->diff($fecha_actual);
         $edad_years = $edad->y;
         $json[]=array(
-            
+            'id'=> $objeto->idusuario,
             'nombre'=> $objeto->nombreu,
             'apellido'=> $objeto->apellidou,
             'edad'=> $edad_years,
@@ -135,6 +135,17 @@ if($_POST['funcion']=='crear_usuario'){
     
 
 }
+if($_POST['funcion']=='borrar_usuario'){
+    $pas=$_POST['pass'];
+    $id_borrado=$_POST['usuario'];
+    $us->borrar($pass,$id_borrado,$usuario);
+}
+    
+    
+
+
+
+
 
 
 ?>

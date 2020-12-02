@@ -91,6 +91,24 @@ class Usuario{
         }
         
     }
+    function borrar($pass,$id_borrado,$usuario){
+        $sql="SELECT idusuario FROM usuario where idusuario=:usuario and contra=:pass";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':usuario'=>$usuario,':pass'=>$pass));
+        $this->objetos = $query->fetchall();
+        if(!empty($this->objetos)){
+            $sql="DELETE FROM usuario where idusuario=:id";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id'=>$id));
+            echo'borrado';
+
+        }else{
+           
+            echo'noborrado';
+
+        }
+
+    }
 }
 
 
