@@ -97,13 +97,11 @@ class Usuario{
         $query->execute(array(':usuario'=>$usuario,':pass'=>$pass));
         $this->objetos = $query->fetchall();
         if(!empty($this->objetos)){
-            $sql="DELETE FROM usuario where idusuario=:id";
+            $sql="DELETE FROM usuario where idusuario=:id_borrado";
             $query = $this->acceso->prepare($sql);
-            $query->execute(array(':id'=>$id));
+            $query->execute(array(':id_borrado'=>$id_borrado));
             echo'borrado';
-
-        }else{
-           
+        }else{   
             echo'noborrado';
 
         }

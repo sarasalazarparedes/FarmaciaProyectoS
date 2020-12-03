@@ -44,7 +44,7 @@ if($_SESSION['tipousuario_idtipousuario']==1 || $_SESSION['tipousuario_idtipousu
           </div>
         </div>
         <div class="card-body">
-          Start creating your amazing application!
+          
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
