@@ -166,7 +166,7 @@ if($_SESSION['tipousuario_idtipousuario']==1 || $_SESSION['tipousuario_idtipousu
                                 <strong style="color: #0B7300 ">
                                   <i class=" fas fa-phone mr-1"></i> Telefono
                                 </strong> 
-                                <p id="telefonou" class="text-muted">5151561515</p>
+                                <p id="telefonou" class="text-muted">51515156151</p>
                                 <strong style="color: #0B7300 ">
                                   <i class=" fas fa-map-marked-alt mr-1"></i> Residencia
                                 </strong> 

@@ -1,10 +1,22 @@
 <?php
-include '../modelo/Laboratorio.php'
-$laboratorio=new Laboratorio();
+include '../modelo/Laboratorio.php';
+$labo=new Laboratorio();
 if($_POST['funcion']=='crear'){
-    $nombre=$_POST['nombre_laboratorio'];
+    $nombre_laboratorio=$_POST['nombre_laboratorio'];
     $avatar='lab_avatar.jpg';
-    $laboratorio->crear($nombre,$avatar);
-    
+    $labo->crear($nombre_laboratorio,$avatar);
+}
+if($_POST['funcion']=='buscar'){
+    $labo->buscar();
+    $json=array();
+    foreach ($labo->objetos as $objeto){
+        $json[]=array(
+            'id'=>$objeto->idlaboratorio,
+            'nombre'=>$objeto->nombre,
+            'avatar'=>'../img/'.$objeto->avatar
+        );
+    }
+    $jsonstring=json_encode($json);
+    echo $jsonstring;
 }
 ?>
