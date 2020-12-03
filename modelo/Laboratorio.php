@@ -2,7 +2,7 @@
 Include 'conexion.php';
 class Laboratorio{
     var $objetos;
-    public function_construct(){
+    public function _construct(){
         $db=new conexion();
         $this->acceso=$bd->pdo;
     }
