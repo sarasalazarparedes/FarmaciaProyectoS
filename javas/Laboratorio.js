@@ -25,7 +25,21 @@ $(document).ready(function(){
     function buscar_lab(consulta){
         funcion='buscar';
         $.post('../controlador/LaboratorioController.php',{consulta,funcion},(response)=>{
-        console.log(response);
+            const laboratorios=JSON.parse(response);
+            let template='';
+            laboratorios.forEach(laboratorio => {
+                template+=`
+                <tr>
+                    <td>${laboratorio.nombre} </td>
+                    <td>
+                        <img src="${laboratorio.avatar}" class="img-fluid rounded" witd="70" heigth="70">
+                    </td>
+                   
+                
+                </tr>
+                `;
+            });
+            $('#laboratorios').html(template);
         })
     }
     $(document).on('keyup','#buscar-laboratorio',function(){

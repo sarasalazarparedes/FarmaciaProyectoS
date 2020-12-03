@@ -154,7 +154,20 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-body"></div>
+                                        <div class="card-body p-0">
+                                            <table class="table table-over text-nowrap">
+                                                <thead class="table-success">
+                                                <tr>
+                                                <th>Laboratorio</th>
+                                                <th>Logo</th>
+                                                <th>Accion</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="table-active" id="laboratorios">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
 
                                         <div class="card-footer"></div>
                                     </div>

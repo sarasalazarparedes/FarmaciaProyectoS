@@ -9,7 +9,7 @@ if($_POST['funcion']=='crear'){
 if($_POST['funcion']=='buscar'){
     $labo->buscar();
     $json=array();
-    foreach ($laboratorio->objetos as $objeto){
+    foreach ($labo->objetos as $objeto){
         $json[]=array(
             'id'=>$objeto->idlaboratorio,
             'nombre'=>$objeto->nombre,
