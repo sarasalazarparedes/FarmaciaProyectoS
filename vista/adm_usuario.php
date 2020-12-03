@@ -32,7 +32,7 @@ if($_SESSION['tipousuario_idtipousuario']==1 || $_SESSION['tipousuario_idtipousu
      <span>Se necesita la contrasenia pra continuar</span>
 
      <div class="alert alert-success text-center" id="confirmado" style='display:none'>
-           <span><i class="fas fa-check m-1"></i>Se elimino exitosamente</span>
+           <span><i class="fas fa-check m-1"></i>Se elimino el password Exitosamente</span>
      </div>
       <div class="alert alert-danger text-center" id="no" style='display:none'>
             <span><i class="fas fa-times m-1"></i> Error</span>
@@ -67,10 +67,16 @@ if($_SESSION['tipousuario_idtipousuario']==1 || $_SESSION['tipousuario_idtipousu
                  <h3 class="card-title">Crear usuario</h3>
                  <button data-dismiss="modal" aria-label="close" class="close">
                     <span aria-hidden="true">&times;</span>
-                 
-                 </button>
-             </div>
-             <div class="card-body">
+                    </button>
+               </div>    
+                    <div class="card-body">
+                       <div class="alert alert-success text-center" id="add" style='display:none'>
+                            <span><i class="fas fa-check m-1"></i>Se creo Exitosamente</span>
+                         </div>
+                         <div class="alert alert-danger text-center" id="noadd" style='display:none'>
+                              <span><i class="fas fa-times m-1"></i> Error</span>
+                           </div>
+
                  <form id="form-crear">
                      <div class="form-group">
                          <label for="nombre">Nombres</label>
