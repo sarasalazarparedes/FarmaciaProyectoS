@@ -1,5 +1,5 @@
 <?php
-Include 'conexion.php';
+include 'conexion.php';
 class Laboratorio{
     var $objetos;
     public function _construct(){
