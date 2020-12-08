@@ -3,6 +3,8 @@ $(document).ready(function(){
   if(tipo_us==2){
     $('#button-crear').hide();
   }
+  //acceso cambiar 
+  //php 70
   //console.log(tipo_us);
     buscar_datos();
     var funcion;
