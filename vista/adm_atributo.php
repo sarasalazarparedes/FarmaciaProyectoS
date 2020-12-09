@@ -1,9 +1,49 @@
+<tittle>Atributos</tittle>
 <?php
 session_start();
 if($_SESSION['tipousuario_idtipousuario']==1){
     include_once 'layouts/header.php';
 ?>
+<div class="modal fade" id="cambiologo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cambiar logo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+            <img id="logoactual"src="../img/avatar.png"class="profile-user-img img-fluid img-circle">
+        </div>
+        <div class="text-center">
+           <b id="nombre_logo">
+          </b>
+     </div> 
 
+     <div class="alert alert-success text-center" id="edit" style='display:none'>
+           <span><i class="fas fa-check m-1"></i>Se cambio el logo Exitosamente</span>
+     </div>
+      <div class="alert alert-danger text-center" id="noedit" style='display:none'>
+            <span><i class="fas fa-times m-1"></i> El logo no logro modifiarse</span>
+     </div>
+
+        <form id="form-logo"entype="multipart/form-data">
+        <div class="input-group mb-3 ml-5 mt-2">
+             <input type="file" name="photo" class="input-group">  
+             <input type="hidden" name="funcion" id="funcion">  
+             <input type="hidden" name="id_logo_lab" id="id_logo_lab"> 
+        </div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerra</button>
+        <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
   <title>Administrador | Atributo
 
   </title>
@@ -141,7 +181,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                 <li class="nav-item"> <a href="#presentacion" class="nav-link" data-toggle="tab"> Presentacion</a></li>
                             </ul>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body p-0">
                             <div class="tab-content" >
                                 <div class="tab-pane active"id='laboratorio' >
                                     <div class="card card-success">
@@ -154,13 +194,13 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-body p-0">
-                                            <table class="table table-over text-nowrap">
+                                        <div class="card-body p-0 table-responsive">
+                                            <table class="table table-hover text-nowrap">
                                                 <thead class="table-success">
                                                 <tr>
-                                                <th>Laboratorio</th>
-                                                <th>Logo</th>
                                                 <th>Accion</th>
+                                                <th>Logo</th>
+                                                <th>Laboratorio</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody class="table-active" id="laboratorios">
