@@ -144,10 +144,10 @@ if($_SESSION['tipousuario_idtipousuario']==1 || $_SESSION['tipousuario_idtipousu
                                 <p id="apellidou" class="text-muted text-center">Apellidos</p>
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
-                                        <b style="color:#0B7300">Edad</b><a id="edad" class="float-right">12</a>
+                                        <b style="color:#0B7300">Edad</b><a id="edad" class="float-right"></a>
                                     </li>
                                     <li class="list-group-item">
-                                    <b style="color:#0B7300">Cedula</b><a id="cedulau" class="float-right">12</a>
+                                    <b style="color:#0B7300">Cedula</b><a id="cedulau" class="float-right"></a>
                                     </li>
                                     <li class="list-group-item">
 

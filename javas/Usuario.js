@@ -8,7 +8,6 @@ $(document).ready(function () {
         $.post('../controlador/UsuarioController.php',{dato,funcion},(response)=>{
            console.log(typeof response);
            console.log(response);
-
             let nombre='';
             let apellido='';
             let edad='';
