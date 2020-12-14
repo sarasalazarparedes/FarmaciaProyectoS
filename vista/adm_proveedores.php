@@ -70,6 +70,9 @@ if($_SESSION['tipousuario_idtipousuario']==1 || $_SESSION['tipousuario_idtipousu
                          <div class="alert alert-danger text-center" id="noadd-prov" style='display:none'>
                              <span><i class="fas fa-times m-1"></i> Error</span>
                         </div>
+                        <div class="alert alert-success text-center" id="edit-prove" style='display:none'>
+                             <span><i class="fas fa-check m-1"></i> Se modifico correctamente</span>
+                        </div>
              
                  <form id="form-crear">
                      <div class="form-group">
@@ -93,13 +96,14 @@ if($_SESSION['tipousuario_idtipousuario']==1 || $_SESSION['tipousuario_idtipousu
                          
                      </div>
                      <input type="hidden" id="id_edit_prov">
+                     </div>
                      <div class="card-footer">
                          <button type="submit"class="btn bg-gradient-purple float-right m-2">Guardar</button>
                          <button type="button" data-dismiss="modal"class="btn bg-gradient-danger float-right m-2">Cerrar</button>
                  </form>
              </div>
          </div>  
-     </div>
+    
 
      
     </div>
@@ -159,4 +163,5 @@ include_once 'layouts/footer.php';
 }
 ?>
 <script src="../javas/Proveedores.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 

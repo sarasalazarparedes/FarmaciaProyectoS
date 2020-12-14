@@ -1,28 +1,48 @@
 $(document).ready(function(){
     var funcion;
      buscar_prov();
+     var edit=false;
     $('#form-crear').submit(e=>{
+        let id= $('#id_edit_prov').val();
         let nombre= $('#nombre').val();
         let telefono= $('#telefono').val();
         let correo= $('#correo').val();
         let direccion= $('#direccion').val();
-        funcion='crear';
-        $.post('../controlador/ProveedoresController.php',{nombre,telefono,correo,direccion,funcion},(response)=>{
-            //console.log(response);
+        if(edit==true){
+          funcion='editar';
+        }else{
+          funcion='crear';
+        }
+       
+        $.post('../controlador/ProveedoresController.php',{id,nombre,telefono,correo,direccion,funcion},(response)=>{
+            console.log(response);
              if(response=='add'){
                 $('#add-prov').hide('slow');
                 $('#add-prov').show(1000);
                 $('#add-prov').hide(2000);
                 $('#form-crear').trigger('reset');
+                buscar_prov();
+
 
              }
-             if(response=='noadd'){
+             if(response=='noadd' || response=='noedit'){
                 $('#noadd-prov').hide('slow');
                 $('#noadd-prov').show(1000);
                 $('#noadd-prov').hide(2000);
                 $('#form-crear').trigger('reset');
 
+
              }
+             if(response=='edit'){
+              $('#edit-prove').hide('slow');
+              $('#edit-prove').show(1000);
+              $('#edit-prove').hide(2000);
+              $('#form-crear').trigger('reset');
+              buscar_prov();
+
+
+           }
+             edit=false;
         });
         e.preventDefault();
 
@@ -60,7 +80,7 @@ $(document).ready(function(){
                     <button class="avatar btn btn-sm btn-info" title="Editar logo" type="button" data-toggle="modal" data-target="#cambiologo">
                       <i class="fas fa-image"></i> Editar Logo
                     </button>
-                    <button class="editar btn btn-sm btn-success" title="Editar proveedor">
+                    <button class="editar btn btn-sm btn-success" title="Editar proveedor"type="button" data-toggle="modal" data-target="#crearproveedor">
                       <i class="fas fa-pencil-alt"></i> Editar Proveedor
                     </button>
                     <button class="borrar btn btn-sm btn-danger" title="Borrar proveedor">
@@ -105,6 +125,27 @@ $(document).ready(function(){
        
 
     });
+
+    $(document).on('click','.editar',(e)=>{
+      const elemento= $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+      const id = $(elemento).attr('provId');
+      //console.log(id);
+      const nombre = $(elemento).attr('provNombre');
+      const direccion = $(elemento).attr('provDireccion');
+      const telefono = $(elemento).attr('provTelefono');
+      const correo= $(elemento).attr('provCorreo');
+      
+      $('#id_edit_prov').val(id);
+      $('#nombre').val(nombre);
+      $('#direccion').val(direccion);
+      $('#telefono').val(telefono);
+      $('#correo').val(correo);
+      edit=true;
+
+     
+
+  });
+
     $('#form-logo').submit(e=>{
         let formData = new FormData($('#form-logo')[0]);
         $.ajax({
@@ -122,7 +163,6 @@ $(document).ready(function(){
                 $('#edit-prov').show(1000);
                 $('#edit-prov').hide(2000);
                 $('#form-logo').trigger('reset');
-                
                 buscar_prov();
                
 
@@ -139,6 +179,56 @@ $(document).ready(function(){
         });
         e.preventDefault();
     });
+
+    $(document).on('click','.borrar',(e)=>{
+      funcion="borrar";
+      const elemento=$(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+      const id=$(elemento).attr('provId');
+      const nombre=$(elemento).attr('provNombre');
+      const avatar=$(elemento).attr('provAvatar');
+      console.log(id+nombre+avatar);
+      const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger mr-1'
+          },
+          buttonsStyling: false
+        })
+        swalWithBootstrapButtons.fire({
+          title: 'Desea eliminar laboratorio:  '+nombre+'?',
+          text: "No podrás revertir esto!",
+          imageUrl:''+avatar+'',
+          imageWidth:100,
+          imageHeight:100,
+          showCancelButton: true,
+          confirmButtonText: 'Yes, borrar esto!',
+          cancelButtonText: 'No, cancelar!',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.dismiss === Swal.DismissReason.confirmButton) {
+              //console.log(id,funcion);
+              $.post('../controlador/ProveedoresController.php',{id,funcion},(response)=>{
+                  console.log(id,funcion);
+                  edit==false;
+                  console.log(response);
+                  buscar_prov();
+              })
+           } else if (result.dismiss === Swal.DismissReason.cancel)
+          {
+            swalWithBootstrapButtons.fire(
+              'Cancelled',
+              'Your imaginary file is safe :)',
+              'error'
+            )
+            buscar_prov();
+            
+            
+
+          }
+        })
+  })
+
+    
 
     
 

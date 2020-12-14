@@ -51,5 +51,36 @@ class Proveedor{
     
         
     }
+    function borrar($id){
+        $sql="DELETE FROM proveedor  where idproveedor=:id ";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$id));
+        if(!empty($query->execute(array(':id'=>$id)))){
+            echo 'borrado';
+        }else{
+            echo 'noborrado';
+        }
+
+    }
+    function editar($id,$nombre,$telefono,$correo,$direccion){
+        $sql="SELECT idproveedor FROM proveedor where idproveedor=:id and nombre=:nombre";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$id,':nombre'=>$nombre));
+        $this->objetos=$query->fetchall();
+       if(!empty($this->objetos)){
+           echo 'noedit';
+
+       }else{
+        $sql="UPDATE proveedor SET nombre=:nombre,telefono=:telefono,correo=:correo,direccion=:direccion where idproveedor=:id";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$id,':nombre'=>$nombre,':telefono'=>$telefono,':direccion'=>$direccion,':correo'=>$correo));
+        echo 'edit';
+
+       }
+
+
+        
+    }
+
 }
 ?>

@@ -1,9 +1,17 @@
-<tittle>Atributos</tittle>
 <?php
 session_start();
-if($_SESSION['tipousuario_idtipousuario']==1){
+if($_SESSION['tipousuario_idtipousuario']==1 || $_SESSION['tipousuario_idtipousuario']==3){
     include_once 'layouts/header.php';
 ?>
+
+  <title>Administrador | Atributos</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <?php
+  include_once 'layouts/nav.php';
+
+
+  ?>
+
 <div class="modal fade" id="cambiologo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -44,13 +52,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
     </div>
   </div>
 </div>
-  <title>Administrador | Atributo
 
-  </title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <?php
-  include_once 'layouts/nav.php';
-  ?>
   <div class="modal fade" id="crearlaboratorio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidder="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -68,14 +70,18 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                     <div class="alert alert-danger text-center" id="noadd-laboratorio" style='display:none;'>
                         <span><i class="fas fa-check m-1"></i>El laboratorio ya existe</span> 
                     </div>
+                    <div class="alert alert-success text-center" id="editl" style='display:none;'>
+                            <span><i class="fas fa-check m-1"></i>Se edito correctamente</span> 
+                        </div>
                     <form id="form-crear-laboratorio">
                         <div class="form-group">
                             <label for="nombre-laboratorio">Nombre</label>
                             <input id="nombre-laboratorio" type="text" class="form-control" placeholder="Ingrese nombre" required>
+                            <input type="hidden" id="id_editar_lab">
                         </div>
                     </div>
                     <div class="card-footer">
-                    <button type="submit" class="btn bg-gradient-primary float-right m-1">Crear</button>
+                    <button type="submit" class="btn bg-gradient-primary float-right m-1">Guardar</button>
                     <button type="button" data-dismiss="modal" class="btn btn-outline-secondary  float-right m-1">Cerrar</button>
                     </form>
                     </div>
@@ -95,16 +101,20 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                         </button>
                     </div>
                     <div class="card-body">
-                        <div class="alert alert-succes text-center" id="add" style='display:none;'>
-                            <span><i class="fas fa-check m-1"></i>Se agrego ocrectamente</span> 
+                        <div class="alert alert-success text-center" id="add-tipo" style='display:none;'>
+                            <span><i class="fas fa-check m-1"></i>Se agrego correctamente</span> 
                         </div>
-                    <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
-                        <span><i class="fas fa-check m-1"></i>El DNI ya esxite</span> 
-                    </div>
+                        <div class="alert alert-danger text-center" id="noadd-tipo" style='display:none;'>
+                            <span><i class="fas fa-check m-1"></i>El tipo ya existe</span> 
+                        </div>
+                        <div class="alert alert-success text-center" id="edit-tip" style='display:none;'>
+                            <span><i class="fas fa-check m-1"></i>Se edito correctamente</span> 
+                        </div>
                     <form id="form-crear-tipo">
                         <div class="form-group">
                             <label for="nombre-tipo">Nombre</label>
                             <input id="nombre-tipo" type="text" class="form-control" placeholder="Ingrese nombre" required>
+                            <input type="hidden" id="id_editar_tip">
                         </div>
                     </div>
                     <div class="card-footer">
@@ -127,13 +137,16 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="card-body">
-                        <div class="alert alert-succes text-center" id="add" style='display:none;'>
-                            <span><i class="fas fa-check m-1"></i>Se agrego ocrectamente</span> 
+                    
+                        <div class="alert alert-succes text-center" id="add-pre" style='display:none;'>
+                            <span><i class="fas fa-check m-1"></i>Se agrego correctamente</span> 
                         </div>
-                    <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
-                        <span><i class="fas fa-check m-1"></i>El DNI ya esxite</span> 
+                    <div class="alert alert-danger text-center" id="noadd-pre" style='display:none;'>
+                        <span><i class="fas fa-check m-1"></i>El DNI ya existe</span> 
                     </div>
+                    <div class="alert alert-succes text-center" id="edit-pre" style='display:none;'>
+                            <span><i class="fas fa-check m-1"></i>Se agrego correctamente</span> 
+                        </div>
                     <form id="form-crear-presentacion">
                         <div class="form-group">
                             <label for="nombre-presentacion">Nombre</label>
@@ -141,7 +154,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                         </div>
                     </div>
                     <div class="card-footer">
-                    <button type="submit" class="btn bg-gradient-primary float-right m-1">Crear</button>
+                    <button type="submit" class="btn bg-gradient-primary float-right m-1">Guardar</button>
                     <button type="button" data-dismiss="modal" class="btn btn-outline-secondary  float-right m-1">Close</button>
                     </form>
                     </div>
@@ -170,16 +183,17 @@ if($_SESSION['tipousuario_idtipousuario']==1){
     </section>
     <!-- Main content -->
     <section class="content">
-        <div class="container-fluid"> 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card"> 
+         <div class="container-fluid">
+             <div class="row">
+                 <div class="col-md-12">
+                     <div class="card">
                         <div class="card-header">
-                            <ul class="nav nav_pills">
-                                <li class="nav-item"> <a href="#laboratorio" class="nav-link active" data-toggle="tab"> Laboratorio</a></li>
-                                <li class="nav-item"> <a href="#tipo" class="nav-link" data-toggle="tab"> Tipo</a></li>
-                                <li class="nav-item"> <a href="#presentacion" class="nav-link" data-toggle="tab"> Presentacion</a></li>
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a href="#laboratorio" class="nav-link " data-toggle="tab">Laboratroio</a></li>
+                                <li class="nav-item"><a href="#tipo" class="nav-link" data-toggle="tab">Tipo</a></li>
+                                <li class="nav-item"><a href="#presentaciones" class="nav-link" data-toggle="tab">Presentacion</a></li>
                             </ul>
+                        
                         </div>
                         <div class="card-body p-0">
                             <div class="tab-content" >
@@ -188,9 +202,9 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                         <div class="card-header">
                                             <div class="card-title">Buscar laboratorio <button type="button" data-toggle="modal" data-target="#crearlaboratorio" class="btn bg-gradient-primary btn-sm m-2">Crear Laboratorio</button></div>
                                             <div class="input-group">
-                                                <input id="buscar-laboratorio" type="text" class="form-control float-left" placeholder="Ingrese nombre">
+                                                   <input id="buscar-laboratorio" type="text" class="form-control float-left" placeholder="Ingrese nombre">
                                                 <div class="input-group-append">
-                                                <button class="btn btn-default"><i class="fas fa-search"></i></button>
+                                                    <button class="btn btn-default"><i class="fas fa-search"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -212,6 +226,7 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                         <div class="card-footer"></div>
                                     </div>
                                 </div>
+                         
                                 <div class="tab-pane" id='tipo'>
                                     <div class="card card-success">
                                         <div class="card-header">
@@ -223,43 +238,63 @@ if($_SESSION['tipousuario_idtipousuario']==1){
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-body"></div>
-                                        <div class="card-footer"></div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id='presentacion'>
+                                        <div class="card-body p-0 table-responsive">
+                                            <table class="table table-hover text-nowrap">
+                                                <thead class="table-success">
+                                                <tr>
+                                                <th>Accion</th>
+                                                <th>Tipo</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="table-active" id="tipos">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                       
+                                       
+                                        </div>
+                        </div>
+                        
+                        <div class="tab-pane" id='tipo'>
                                     <div class="card card-success">
                                         <div class="card-header">
-                                            <div class="card-title">Buscar presentacion<button type="button" data-toggle="modal" data-target="#crearpresentacion" class="btn bg-gradient-primary btn-sm m-2">Crear presentacion</button></div>
+                                            <div class="card-title">Buscar tifdsfsdo<button type="button" data-toggle="modal" data-target="#creartipo" class="btn bg-gradient-primary btn-sm m-2">Crear tipo</button></div>
                                             <div class="input-group">
-                                                <input id="buscar-presentacion" type="text" class="form-control float-left" placeholder="Ingrese nombre">
+                                                <input id="buscar-tipo" type="text" class="form-control float-left" placeholder="Ingrese nombre">
                                                 <div class="input-group-append">
                                                 <button class="btn btn-default"><i class="fas fa-search"></i></button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-body"></div>
-                                        <div class="card-footer"></div>
-                                    </div>
-                                </div>
-                            </div>
+                                        <div class="card-body p-0 table-responsive">
+                                            <table class="table table-hover text-nowrap">
+                                                <thead class="table-success">
+                                                <tr>
+                                                <th>Accion</th>
+                                                <th>Tipo</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="table-active" id="tipos">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                       
+                                       
+                                        </div>
                         </div>
-                        <div class="card-footer">
-                    
-                        </div>
-                    </div>    
-                </div>
-            
-            </div>
-        </div> 
+                     
+                     </div>
+                 </div>
+             </div>
+         </div>
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
+  
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
@@ -271,3 +306,6 @@ include_once 'layouts/footer.php';
 }
 ?>
 <script src="../javas/Laboratorio.js"></script>
+<script src="../javas/Tipo.js"></script>
+<script src="../javas/Presentacion.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

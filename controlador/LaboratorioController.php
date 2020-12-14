@@ -1,11 +1,18 @@
 <?php
 include '../modelo/Laboratorio.php';
 $labo=new Laboratorio();
+
 if($_POST['funcion']=='crear'){
     $nombre_laboratorio=$_POST['nombre_laboratorio'];
     $avatar='lab_avatar.jpg';
     $labo->crear($nombre_laboratorio,$avatar);
 }
+if($_POST['funcion']=='editar'){
+    echo('entro');
+    $nombre_laboratorio=$_POST['nombre_laboratorio'];
+    $id_editado=$_POST['id_editado'];
+    $labo->editar($nombre_laboratorio,$id_editado);
+} 
 if($_POST['funcion']=='buscar'){
     $labo->buscar();
     $json=array();
@@ -48,4 +55,23 @@ if($_POST['funcion']=='cambiar_logo'){
         echo $jsonstring;
     }
 }
+if($_POST['funcion']=='borrar'){
+   
+    $id=$_POST['id'];
+    $labo->borrar($id);
+}
+if($_POST['funcion']=="rellenar_laboratorios"){
+    $labo->rellenar_laboratorios();
+    $json =array();
+    foreach ($labo->objetos as $objeto) {
+        $json[]=array(
+            'id'=>$objeto->idlaboratorio,
+            'nombre'=>$objeto->nombre
+        );
+
+    }
+    $jsonstring=json_encode($json);
+    echo $jsonstring;
+}
+
 ?>
