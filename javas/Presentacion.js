@@ -3,9 +3,10 @@ $(document).ready(function(){
     var funcion;
     var edit=true;
     $('#form-crear-presentacion').submit(e=>{
-        console.log('h');
+        
         let nombre_presentacion=$('#nombre-presentaciones').val();
         let id_editado=$('#id_editar_pre').val();
+        console.log(nombre_presentacion+id_editado);
         if(edit==true){
             funcion='crear';   
         }

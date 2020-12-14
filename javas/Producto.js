@@ -44,17 +44,19 @@ $(document).ready(function(){
             $('#presentacion').html(template);
         })
     }
-    $('form-crear-producto').submit(e=>{
-        let nombre=('#nombre-producto').val();
-        let concentracion=('#concentracion').val();
-        let adicional=('#adicional').val();
-        let precio=('#precio').val();
-        let laboratorio=('#laboratorio').val();
-        let tipo=('#tipo').val();
-        let presentacion=('#presentacion').val();
-        console.log(nombre+concentracion+adicional+precio+laboratorio+tipo+presentacion);
+    $('#form-crear-producto').submit(e=>{
+        let nombre=$('#nombre').val();
+        let concentracion=$('#concentracion').val();
+        let adicional=$('#adicional').val();
+        let precio=$('#precio').val();
+        let laboratorio=$('#laboratorio').val();
+        let tipo=$('#tipo').val();
+        let presentacion=$('#presentacion').val();
+        
         funcion="crear";
+        console.log(nombre+concentracion+adicional+precio+laboratorio+tipo+presentacion);
         $.post('../controlador/ProductoController.php',{funcion,nombre,concentracion,adicional,precio,laboratorio,tipo,presentacion},(response)=>{
+            console.log(response);
             if(response=='add'){
                 $('#add').hide('slow');
                 $('#add').show(1000);

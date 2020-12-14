@@ -58,12 +58,19 @@ class Presentacion{
         }
     }
     function editar($nombre,$id_editado){
-        echo($nombre_laboratorio+$id_editado);
+        echo($nombre+$id_editado);
         $sql="UPDATE presentacion set tipo=:nombre where idpresentacion=:id_editado";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id'=>$id_editado,':nombre'=>$nombre_laboratorio));
+        $query->execute(array(':id'=>$id_editado,':nombre'=>$nombre));
         echo'editar';
 
+    }
+    function rellenar_presentaciones(){
+        $sql="SELECT * FROM presentacion order by tipo ";
+        $query=$this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
     }
 }
 ?>

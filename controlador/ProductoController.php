@@ -11,7 +11,7 @@ if($_POST['funcion']=='crear'){
     $tipo=$_POST['tipo'];
     $presentacion=$_POST['presentacion'];
     $avatar='prod_avatar.jpg';
-    $producto->crear($nombre,$concentracion,$adicional,$precio,$laboratorio,$tipo,$presentacion);
+    $producto->crear($nombre,$concentracion,$adicional,$precio,$laboratorio,$tipo,$presentacion,$avatar);
 }
 if($_POST['funcion']=='buscar'){
     $producto->buscar();

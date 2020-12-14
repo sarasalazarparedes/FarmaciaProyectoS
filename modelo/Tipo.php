@@ -64,5 +64,12 @@ class Tipo{
         echo'editar';
 
     }
+    function rellenar_tipos(){
+        $sql="SELECT * FROM tipoproducto order by caracteristica ";
+        $query=$this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
 }
 ?>

@@ -29,8 +29,8 @@ if($_SESSION['tipousuario_idtipousuario']==1 || $_SESSION['tipousuario_idtipousu
 
                  <form id="form-crear-producto">
                      <div class="form-group">
-                         <label for="nombre-producto">Nombre</label>
-                         <input id="nombre-producto"type="text" class="form-control"placeholder="Ingrese nombre" required>
+                         <label for="nombre">Nombre</label>
+                         <input id="nombre"type="text" class="form-control"placeholder="Ingrese nombre" required>
                          
                      </div>
                      <div class="form-group">

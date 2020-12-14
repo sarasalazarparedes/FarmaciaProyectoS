@@ -74,5 +74,12 @@ class Laboratorio{
         $query->execute(array(':id_editado'=>$id_editado,':nombre_laboratorio'=>$nombre_laboratorio));
         echo'edit';
     }
+    function rellenar_laboratorios(){
+        $sql="SELECT * FROM laboratorio order by nombre ";
+        $query=$this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
 }
 ?>
