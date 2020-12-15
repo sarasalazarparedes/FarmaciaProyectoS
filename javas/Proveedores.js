@@ -208,7 +208,12 @@ $(document).ready(function(){
           if (result.dismiss === Swal.DismissReason.confirmButton) {
               //console.log(id,funcion);
               $.post('../controlador/ProveedoresController.php',{id,funcion},(response)=>{
-                  console.log(id,funcion);
+                edit=false;
+                if(response='borrado'){
+                  'el producto ya fue eliminado',
+                  'success'
+                }
+                console.log(id,funcion);
                   edit==false;
                   console.log(response);
                   buscar_prov();

@@ -7,11 +7,9 @@ if($_POST['funcion']=='crear'){
     $presentacion->crear($nombre);
 }
 if($_POST['funcion']=='editar'){
-    echo('entro');
-    $nombre_laboratorio=$_POST['nombre_presentacion'];
+    $nombre=$_POST['nombre_presentacion'];
     $id_editado=$_POST['id_editado'];
-    $presentacion->editar($nombre_laboratorio,$id_editado);
-    echo($nombre_laboratorio+$id_editado);
+    $presentacion->editar($nombre,$id_editado);
 }
 if($_POST['funcion']=='buscar'){
     $presentacion->buscar();

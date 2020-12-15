@@ -45,7 +45,7 @@ class Tipo{
 
     }
     function borrar($id){
-        $sql="DELETE FROM tipoproducto WHERE idtipoproducto=:id";
+        $sql="DELETE FROM tipoproducto WHERE idtipoProducto=:id";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id'=>$id));
         if(!empty($query->execute(array(':id'=>$id)))){
@@ -57,10 +57,9 @@ class Tipo{
     }
     function editar($nombre,$id_editado){
        
-        $sql="UPDATE tipoproducto set caracteristica=:nombre where idtipoproducto=:id_editado";
+        $sql="UPDATE tipoproducto set caracteristica=:nombre where idtipoProducto=:id_editado";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id_editado'=>$id_editado,':nombre'=>$nombre));
-        
+        $query->execute(array(':id_editado'=>$id_editado,':nombre'=>$nombre));  
         echo'editar';
 
     }

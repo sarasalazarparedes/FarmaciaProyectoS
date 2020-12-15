@@ -11,6 +11,7 @@ if($_POST['funcion']=='crear'){
     $proveedor->crear($nombre,$telefono,$correo,$direccion,$avatar);
     
 }
+
 if($_POST['funcion']=='editar'){
     $id=$_POST['id'];
     $nombre=$_POST['nombre'];
@@ -73,6 +74,18 @@ if($_POST['funcion']=='borrar'){
     $id=$_POST['id'];
     $proveedor->borrar($id);
 }
+if($_POST['funcion']=="rellenar_proveedores"){
+    $proveedor->rellenar_proveedores();
+    $json =array();
+    foreach ($proveedor->objetos as $objeto) {
+        $json[]=array(
+            'id'=>$objeto->idproveedor,
+            'nombre'=>$objeto->nombre
+        );
 
+    }
+    $jsonstring=json_encode($json);
+    echo $jsonstring;
+}
 
 ?>

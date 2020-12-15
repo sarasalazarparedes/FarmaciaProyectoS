@@ -1,62 +1,64 @@
 $(document).ready(function(){
-    buscar_tip();
+    buscar_pre();
     var funcion;
-    var edit=true;
+    var edit=false;
     $('#form-crear-presentacion').submit(e=>{
-        
-        let nombre_presentacion=$('#nombre-presentaciones').val();
+        let nombre_presentacion=$('#nombre-presentacion').val();
         let id_editado=$('#id_editar_pre').val();
-        console.log(nombre_presentacion+id_editado);
-        if(edit==true){
-            funcion='crear';   
-        }
         if(edit==false){
+            funcion='crear';
+            //e.preventDefault();
+            //console.log (edit);
+        }
+        else{
             funcion='editar';
-            console.log(funcion);
+            console.log(nombre_presentacion+id_editado);
         }
         $.post('../controlador/PresentacionController.php',{nombre_presentacion,id_editado,funcion},(response)=>{
+            console.log (response);
             if(response=='add'){
-                console.log (response);
+               
                 $('#add-pre').hide('slow');
                 $('#add-pre').show(1000);
                 $('#add-pre').hide(2000);
                 $('#form-crear-presentacion').trigger('reset');
-                buscar_tip();
+                buscar_pre();
             }
             if(response=='noadd'){
                 $('#noadd-pre').hide('slow');
                 $('#noadd-pre').show(1000);
                 $('#noadd-pre').hide(2000);
                 $('#form-crear-presentacion').trigger('reset');
+                buscar_pre();
             }
-            if(response=='edit'){
-                console.log (response);
+            if(response=='editar'){
                 $('#edit-pre').hide('slow');
                 $('#edit-pre').show(1000);
                 $('#edit-pre').hide(2000);
                 $('#form-crear-presentacion').trigger('reset');
-                buscar_tip();
+                buscar_pre();
             }
-            edit=false;
+            edit==false;
         });
         e.preventDefault();
     });
-    function buscar_tip(consulta){
+    function buscar_pre(consulta){
         funcion='buscar';
         $.post('../controlador/PresentacionController.php',{consulta,funcion},(response)=>{
-            console.log(response);
-            //const laboratorios = JSON.parse(JSON.stringify(response));
-            //const laboratorios = response;
+           
             const presentaciones = JSON.parse(response);
-            let template='';
-          
+            template='';
+            
+
             presentaciones.forEach(presentacion => {
                 template+=`
                 <tr preId="${presentacion.id}" preNombre="${presentacion.nombre}">
                     <td>
-                        <button class="editar-tip btn btn-success" title="Editar presentacion type="button" data-toggle="modal" data-target="#crearpresentacion"><i class="fas fa-pencil-alt"></i>
+                        <button class="editar-pre btn btn-success" title="Editar la presentacion" type="button" data-toggle="modal" data-target="#crearpresentaciones">
+                            <i class="fas fa-pencil-alt"></i>
                         </button>
-                        <button class="borrar-tip btn btn-danger" title="Eliminar presentacion"><i class="fas fa-trash-alt"></i>
+                        <button class="borrar-pre btn btn-danger" title="Eliminar presentacion">
+                          <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>
                     <td>${presentacion.nombre} </td>
@@ -67,18 +69,17 @@ $(document).ready(function(){
             $('#presentaciones').html(template);
         })
     }
-    $(document).on('keyup','#buscar-presentacion',function(){
+    $(document).on('keyup','#buscar-presentaciones',function(){
         let valor =$(this).val();
         if(valor!=''){
-            buscar_tip(valor);
+            buscar_pre(valor);
         }
         else{
-            buscar_tip();
+            buscar_pre();
         }
     })
- 
-    $(document).on('click','.borrar-presentacion',(e)=>{
-        funcion="borrar";
+    $(document).on('click','.borrar-pre',(e)=>{
+        funcion='borrar';
         const elemento=$(this)[0].activeElement.parentElement.parentElement;
         const id=$(elemento).attr('preId');
         const nombre=$(elemento).attr('preNombre');
@@ -102,8 +103,9 @@ $(document).ready(function(){
                 //console.log(id,funcion);
                 $.post('../controlador/PresentacionController.php',{id,funcion},(response)=>{
                     console.log(id,funcion);
-                    edit=false;
-                    console.log(response);
+                    edit==false;
+                    //console.log(response);
+                    buscar_pre();
                 })
              } else if (result.dismiss === Swal.DismissReason.cancel)
             {
@@ -112,15 +114,20 @@ $(document).ready(function(){
                 'Your imaginary file is safe :)',
                 'error'
               )
+              buscar_pre();
+              
+              
+
             }
           })
     })
     $(document).on('click','.editar-pre',(e)=>{
         const elemento=$(this)[0].activeElement.parentElement.parentElement;
         const id=$(elemento).attr('preId');
-        const nombre=$(elemento).attr('pre  Nombre');
+        const nombre=$(elemento).attr('preNombre');
         $('#id_editar_pre').val(id);
         $('#nombre-presentacion').val(nombre);
-        edit=false;
+        edit=true;
+        console.log(id+nombre);
     })
 });

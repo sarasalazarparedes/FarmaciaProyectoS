@@ -102,7 +102,7 @@ $(document).ready(function(){
             if (result.dismiss === Swal.DismissReason.confirmButton) {
                 //console.log(id,funcion);
                 $.post('../controlador/TipoController.php',{id,funcion},(response)=>{
-                    console.log(id,funcion);
+                    console.log(response);
                     edit==false;
                     //console.log(response);
                     buscar_tip();

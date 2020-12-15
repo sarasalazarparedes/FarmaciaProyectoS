@@ -23,15 +23,33 @@ class Producto{
         }
 
     }
+    function editar($id,$nombre,$concentracion,$adicional,$precio,$laboratorio,$tipo,$presentacion){
+        $sql="SELECT idproducto from producto where idproducto=:id and nombre=:nombre  and concentrancion=:concentracion and adicional=:adicional and precio=:precio and laboratorio_idlaboratorio=:laboratorio and tipoproducto_idtipoproducto=:tipo and presentacion_idpresentacion=:presentacion ";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$id,':nombre'=>$nombre,':concentracion'=>$concentracion,':adicional'=>$adicional,':precio'=>$precio,':laboratorio'=>$laboratorio,':tipo'=>$tipo,':presentacion'=>$presentacion));
+        $this->objetos=$query->fetchall();
+        echo( $this->objetos);
+        
+        if(!empty($this->objetos)){
+            echo 'noedit';
+        }
+        else{
+            $sql="UPDATE producto set nombre=:nombre, concentrancion=:concentracion , adicional=:adicional , precio=:precio , laboratorio_idlaboratorio=:laboratorio, tipoproducto_idtipoproducto=:tipo , presentacion_idpresentacion=:presentacion,precio=:precio where idproducto=:id;";
+            $query=$this->acceso->prepare($sql);
+            $query->execute(array(':nombre'=>$nombre,':concentracion'=>$concentracion,':adicional'=>$adicional,':precio'=>$precio,':laboratorio'=>$laboratorio,':tipo'=>$tipo,':presentacion'=>$presentacion));
+            echo 'edit';
+        }
+
+    }
     function buscar(){
         if(!empty($_POST['consulta'])){
              $consulta=$_POST['consulta'];
-             $sql="SELECT idproducto,producto.nombre as nombre,concentracion,adicional,precio,laboratorio.nombre as laboratorio,tipoProducto.caracteristica as tipo,
+             $sql="SELECT idproducto,producto.nombre as nombre,concentrancion,adicional,precio,laboratorio.nombre as laboratorio,tipoproducto.caracteristica as tipo,
              presentacion.tipo as presentacion,producto.avatar as avatar
              from producto
              join laboratorio on laboratorio_idlaboratorio
-             join tipo_productoon tipoPoducto_idtipoProducto=
-             join presentacion on presentacion_idpresentacion  and producto.nombre like :consulta limit 25";
+             join tipoproducto on tipoproducto_idtipoproducto
+             join presentacion on presentacion_idpresentacion  and producto.nombre like :consulta group by idproducto";
              $query = $this->acceso->prepare($sql);
              $query->execute(array(':consulta'=>"%$consulta%"));
              $this->objetos = $query->fetchall();
@@ -40,12 +58,12 @@ class Producto{
 
         }else{
        
-            $sql="SELECT idproducto,producto.nombre as nombre,concentracion,adicional,precio,laboratorio.nombre as laboratorio,tipoProducto.caracteristica as tipo,
+            $sql="SELECT idproducto, producto.nombre as nombre,concentrancion,adicional,precio,laboratorio.nombre as laboratorio,tipoproducto.caracteristica as tipo,
              presentacion.tipo as presentacion,producto.avatar as avatar
              from producto
              join laboratorio on laboratorio_idlaboratorio
-             join tipo_productoon tipoPoducto_idtipoProducto=
-             join presentacion on presentacion_idpresentacion  and producto.nombre not like '' limit 25";
+             join tipoproducto on tipoproducto_idtipoproducto
+             join presentacion on presentacion_idpresentacion  and producto.nombre not like '' group by idproducto";
             $query = $this->acceso->prepare($sql);
             $query->execute();
             $this->objetos = $query->fetchall();
@@ -55,7 +73,31 @@ class Producto{
         }
 
     }
-    
-    
+    function borrar($id){
+        $sql="DELETE FROM producto where idproducto=:id";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array('id'=>$id));
+        if(!empty($query->execute(array('id'=>$id)))){
+            echo'borrado';
+        }
+        else{
+            echo'noborrado';
+        }
+    }
+    function cambiar_logo($id,$nombre){
+      
+        
+            $sql="UPDATE producto SET avatar=:nombre where idproducto=:id ";
+            $query=$this->acceso->prepare($sql);
+            $query->execute(array(':id'=>$id,':nombre'=>$nombre));
+        
+    }
+    function obtener_stock($id){
+        $sql = "SELECT SUM(stock) as total FROM lote where producto_idproducto=:id";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array('id'=>$id)); 
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
 }
 ?>

@@ -15,7 +15,7 @@ class Presentacion{
             echo 'noadd';
         }
         else{
-            $sql="INSERT INTO presentacion values(:nombre);";
+            $sql="INSERT INTO presentacion (tipo) values(:nombre);";
             $query=$this->acceso->prepare($sql);
             $query->execute(array(':nombre'=>$nombre));
             echo 'add';
@@ -58,10 +58,9 @@ class Presentacion{
         }
     }
     function editar($nombre,$id_editado){
-        echo($nombre+$id_editado);
-        $sql="UPDATE presentacion set tipo=:nombre where idpresentacion=:id_editado";
+        $sql="UPDATE presentacion  set tipo=:nombre where idpresentacion=:id_editado";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id'=>$id_editado,':nombre'=>$nombre));
+        $query->execute(array(':id_editado'=>$id_editado,':nombre'=>$nombre));
         echo'editar';
 
     }
