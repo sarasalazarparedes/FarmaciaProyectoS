@@ -31,7 +31,11 @@ if($_POST['funcion']=='buscar'){
             'laboratorio'=>$objeto->laboratorio,
             'tipo'=>$objeto->tipo,
             'presentacion'=>$objeto->presentacion,
+            'laboratorio_id'=>$objeto->laboratorio_idlaboratorio,
+            'tipo_id'=>$objeto->tipoproducto_idtipoproducto,
+            'presentacion_id'=>$objeto->presentacion_idpresentacion,
             'avatar'=>'../img/'.$objeto->avatar
+            
       );
     }
     $jsonstring=json_encode($json);
@@ -79,7 +83,7 @@ if($_POST['funcion']=='editar'){
     $tipo=$_POST['tipo'];
     $presentacion=$_POST['presentacion'];
     $producto->editar($id,$nombre,$concentracion,$adicional,$precio,$laboratorio,$tipo,$presentacion);
-    echo($laboratorio+''+$adicional+''+$nombre+''+$presentacion+'');
+
 }
 if($_POST['funcion']=='borrar'){
     $id=$_POST['id'];

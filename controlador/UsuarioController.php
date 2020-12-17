@@ -129,13 +129,13 @@ if($_POST['funcion']=='crear_usuario'){
     $edad=$_POST['edad'];
     $dni=$_POST['dni'];
     $pass=$_POST['pass'];
-    $tipo=2;
-    $avatar='farmacias_default.jpeg';
+    $tipo=1;
+    $avatar='logo.png';
     $us->crear($nombre,$apellido,$edad,$dni,$pass,$tipo,$avatar);
     
 
 }
-if($_POST['funcion']=='borrar_usuario'){
+if($_POST['funcion']=='borrar-usuario'){
     $pass=$_POST['pass'];
     $id_borrado=$_POST['usuario'];
     $us->borrar($pass,$id_borrado,$usuario);

@@ -63,7 +63,7 @@ $(document).ready(function(){
       })
   }
   $('#form-crear-producto').submit(e=>{
-    let id= $('#id_edit_prov').val();
+      let id= $('#id_edit_prod').val();
       let nombre=$('#nombre').val();
       let concentracion=$('#concentracion').val();
       let adicional=$('#adicional').val();
@@ -71,15 +71,15 @@ $(document).ready(function(){
       let laboratorio=$('#laboratorio').val();
       let tipo=$('#tipo').val();
       let presentacion=$('#presentacion').val();
+      if(edit==true){
+        funcion='editar';
+      }else{
+        funcion='crear';
+      }
       
-      funcion="crear";
-      console.log(nombre+concentracion+adicional+precio+laboratorio+tipo+presentacion);
-      $.post('../controlador/ProductoController.php',{funcion,nombre,concentracion,adicional,precio,laboratorio,tipo,presentacion,id},(response)=>{
-        if(edit==true){
-          funcion='editar';
-        }else{
-          funcion='crear';
-        }
+      console.log(id+ nombre+concentracion+adicional+precio+laboratorio+tipo+presentacion);
+      $.post('../controlador/ProductoController.php',{funcion,id,nombre,concentracion,adicional,precio,laboratorio,tipo,presentacion,id},(response)=>{
+       
         console.log(response);
           if(response=='add'){
               $('#add').hide('slow');
@@ -88,12 +88,20 @@ $(document).ready(function(){
               $('#form-crear-producto').trigger('reset');
               buscar_producto();
           }
-          else{
+          if(response=='edit'){
+            $('#add').hide('slow');
+            $('#add').show(1000);
+            $('#add').hide(2000);
+            $('#form-crear-producto').trigger('reset');
+            buscar_producto();
+        }
+          if(response=='noadd'){
               $('#noadd').hide('slow');
               $('#noadd').show(1000);
               $('#noadd').hide(2000);
               $('#form-crear-producto').trigger('reset');
           }
+          buscar_producto();
           edit=false;
       });
       e.preventDefault();
@@ -107,7 +115,7 @@ $(document).ready(function(){
           let template='';
           productos.forEach(producto => {
               template+=`
-              <div prodId="${producto.id}" prodStock="${producto.stock}" prodNombre="${producto.nombre}" prodPrecio="${producto.precio}" prodConcentracion="${producto.concentracion}" prodAdicional="${producto.adicional}" prodLaboratorio="${producto.laboratorio}" prodTipo="${producto.tipo}" prodPresentacion="${producto.presentacion}" prodAvatar="${producto.avatar}"class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+              <div prodId="${producto.id}"  prodNombre="${producto.nombre}" prodPrecio="${producto.precio}" prodConcentracion="${producto.concentracion}" prodAdicional="${producto.adicional}" prodLabo="${producto.laboratorio}" prodLaboratorio="${producto.laboratorio_id}" prodTipo="${producto.tipo_id}" prodPresentacion="${producto.presentacion_id}" prodAvatar="${producto.avatar}"class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
               <div class="card bg-light">
                 <div class="card-header text-muted border-bottom-0">
                   <i class="fas fa-lg fa-cubes mr-1"> </i>${producto.stock}
@@ -135,7 +143,7 @@ $(document).ready(function(){
                     <button class="avatar btn btn-sm bg-teal" title="Editar logo" type="button" data-toggle="modal" data-target="#cambiologo">
                       <i class="fas fa-image"></i> Editar Logo
                     </button>
-                    <button class="editar btn btn-sm btn-success" title="Editar producto"type="button" data-toggle="modal" data-target="#crearusuario">
+                    <button class="editar btn btn-sm btn-success" title="Editar producto"type="button" data-toggle="modal" data-target="#crearproducto">
                       <i class="fas fa-pencil-alt"></i> Editar producto
                     </button>
                     <button class="lote btn btn btn-sm btn-primary" title="Agregar"type="button" data-toggle="modal" data-target="#crearlote"  >
@@ -167,18 +175,16 @@ $(document).ready(function(){
       }
   });
   $(document).on('click','.editar',(e)=>{
-  
       const elemento=$(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
       const id=$(elemento).attr('prodId');
       const nombre=$(elemento).attr('prodNombre');
-      //console.log(id+nombre);
       const concentracion=$(elemento).attr('prodConcentracion');
       const adicional=$(elemento).attr('prodAdicional');
       const precio=$(elemento).attr('prodPrecio');
       const laboratorio=$(elemento).attr('prodLaboratorio');
       const tipo=$(elemento).attr('prodTipo');
       const presentacion=$(elemento).attr('prodPresentacion');
-      console.log(id+''+laboratorio);
+      console.log(id+''+laboratorio+nombre+concentracion+adicional+precio+laboratorio+tipo+presentacion);
       $('#id_edit_prod').val(id);
       $('#nombre').val(nombre);
       $('#concentracion').val(concentracion);

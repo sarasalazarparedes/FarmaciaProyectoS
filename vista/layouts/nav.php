@@ -1,5 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="stylesheet" href="../css/datatables.css">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/compra.css">
 <!-- select2 -->
 <link rel="stylesheet" href="../css/select2.css">
 <!-- sweetalert2 -->
@@ -33,8 +35,8 @@
         </li>
 
         <li class="nav-item dropdown" id="cat-carrito" style="display:none">
-          <img src="../img/carrito.png"class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
-             
+          <img src="../img/carrito.png"class="imagen-carrito nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
+             <span id="contador"class="contador badge badge-danger"></span>
           </img>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <table class="table table-hover text-nowrap p-0">
@@ -54,7 +56,7 @@
 
               </tbody>
             </table>
-            <a href="#" class="btn btn-success btn-block">Procesar Compra</a>
+            <a href="#" id="procesar-pedido" class="btn btn-success btn-block">Procesar Compra</a>
             <a href="#" id="vaciar-carrito" class="btn btn-danger btn-block">vaciar carrito</a>
           </div>
         </li>
@@ -111,6 +113,15 @@
                 </p>
               </a>
             </li>
+            <li class="nav-header">Ventas Registros</li>
+            <li class="nav-item">
+              <a href="adm_venta.php" class="nav-link">
+                <i class="nav-icon fas fa-notes-medical"></i>
+                <p>
+                  Registros
+                </p>
+              </a>
+            </li>
             <li class="nav-header">Almacen</li>
             <li class="nav-item">
               <a href="adm_producto.php" class="nav-link">
@@ -136,12 +147,20 @@
               </p>
             </a>
          </li>
-            <li class="nav-header">Compras</li>
+            <li class="nav-header">Compras proveedores</li>
             <li class="nav-item">
               <a href="adm_proveedores.php" class="nav-link">
                 <i class="nav-icon fas fa-truck"></i>
                 <p>
                   Gestion proveedores
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="adm_compraproveedores.php" class="nav-link">
+              <i class="fas fa-lg fa-flask"></i>
+                <p>
+                  compra proveedores
                 </p>
               </a>
             </li>
@@ -151,3 +170,4 @@
       </div>
       <!-- /.sidebar -->
     </aside>
+    

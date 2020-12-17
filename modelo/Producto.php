@@ -24,19 +24,17 @@ class Producto{
 
     }
     function editar($id,$nombre,$concentracion,$adicional,$precio,$laboratorio,$tipo,$presentacion){
-        $sql="SELECT idproducto from producto where idproducto=:id and nombre=:nombre  and concentrancion=:concentracion and adicional=:adicional and precio=:precio and laboratorio_idlaboratorio=:laboratorio and tipoproducto_idtipoproducto=:tipo and presentacion_idpresentacion=:presentacion ";
+        $sql="SELECT idproducto from producto where idproducto!=:id  and nombre=:nombre  and concentrancion=:concentracion and adicional=:adicional and precio=:precio and laboratorio_idlaboratorio=:laboratorio and tipoproducto_idtipoproducto=:tipo and presentacion_idpresentacion=:presentacion ";
         $query=$this->acceso->prepare($sql);
         $query->execute(array(':id'=>$id,':nombre'=>$nombre,':concentracion'=>$concentracion,':adicional'=>$adicional,':precio'=>$precio,':laboratorio'=>$laboratorio,':tipo'=>$tipo,':presentacion'=>$presentacion));
         $this->objetos=$query->fetchall();
-        echo( $this->objetos);
-        
         if(!empty($this->objetos)){
             echo 'noedit';
         }
         else{
-            $sql="UPDATE producto set nombre=:nombre, concentrancion=:concentracion , adicional=:adicional , precio=:precio , laboratorio_idlaboratorio=:laboratorio, tipoproducto_idtipoproducto=:tipo , presentacion_idpresentacion=:presentacion,precio=:precio where idproducto=:id;";
+            $sql="UPDATE producto set nombre=:nombre, concentrancion=:concentracion , adicional=:adicional  , laboratorio_idlaboratorio=:laboratorio, tipoproducto_idtipoproducto=:tipo , presentacion_idpresentacion=:presentacion,precio=:precio where idproducto=:id;";
             $query=$this->acceso->prepare($sql);
-            $query->execute(array(':nombre'=>$nombre,':concentracion'=>$concentracion,':adicional'=>$adicional,':precio'=>$precio,':laboratorio'=>$laboratorio,':tipo'=>$tipo,':presentacion'=>$presentacion));
+            $query->execute(array(':id'=>$id,':nombre'=>$nombre,':concentracion'=>$concentracion,':adicional'=>$adicional,':precio'=>$precio,':laboratorio'=>$laboratorio,':tipo'=>$tipo,':presentacion'=>$presentacion));
             echo 'edit';
         }
 
@@ -44,8 +42,8 @@ class Producto{
     function buscar(){
         if(!empty($_POST['consulta'])){
              $consulta=$_POST['consulta'];
-             $sql="SELECT idproducto,producto.nombre as nombre,concentrancion,adicional,precio,laboratorio.nombre as laboratorio,tipoproducto.caracteristica as tipo,
-             presentacion.tipo as presentacion,producto.avatar as avatar
+             $sql="SELECT idproducto,producto.nombre as nombre,concentrancion,adicional,precio, laboratorio.nombre as laboratorio,tipoproducto.caracteristica as tipo,
+             presentacion.tipo as presentacion,producto.avatar as avatar,laboratorio_idlaboratorio, tipoproducto_idtipoproducto,presentacion_idpresentacion 
              from producto
              join laboratorio on laboratorio_idlaboratorio
              join tipoproducto on tipoproducto_idtipoproducto
@@ -59,7 +57,7 @@ class Producto{
         }else{
        
             $sql="SELECT idproducto, producto.nombre as nombre,concentrancion,adicional,precio,laboratorio.nombre as laboratorio,tipoproducto.caracteristica as tipo,
-             presentacion.tipo as presentacion,producto.avatar as avatar
+             presentacion.tipo as presentacion,producto.avatar as avatar,laboratorio_idlaboratorio, tipoproducto_idtipoproducto,presentacion_idpresentacion
              from producto
              join laboratorio on laboratorio_idlaboratorio
              join tipoproducto on tipoproducto_idtipoproducto
