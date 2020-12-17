@@ -144,7 +144,7 @@ if ($_SESSION['tipousuario_idtipousuario'] == 1 || $_SESSION['tipousuario_idtipo
                                             <span class="info-box-icon"><i class="fas fa-money-bill-alt"></i></span>
                                             <div class="info-box-content">
                                                 <span class="info-box-text text-left ">INGRESO</span>
-                                                <input type="number" id="pago" min="1" placeholder="Ingresa Dinero" class="form-control">
+                                                <input type="number" id="pago" min="1" placeholder="Ingresa Dinero" class="form-control" required> 
                                                
                                             </div>
                                         </div>

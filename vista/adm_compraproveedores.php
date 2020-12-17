@@ -48,7 +48,7 @@ if ($_SESSION['tipousuario_idtipousuario'] == 1 || $_SESSION['tipousuario_idtipo
                                 <div class="form-group row">
                                     <span>Proveedor: </span>
                                     <div class="input-group-append col-md-6">
-                                        <input type="text" class="form-control" id="cliente" placeholder="Ingresa nombre">
+                                        <input type="text" class="form-control" id="nombre" placeholder="Ingresa nombre">
                                     </div>
                                 </div>
                                
@@ -85,15 +85,14 @@ if ($_SESSION['tipousuario_idtipousuario'] == 1 || $_SESSION['tipousuario_idtipo
                                 </div>
                             </div>
                         </header>
-                        <button id="actualizar"class="btn btn-success">Actualizar</button>
+                        <button id="agregar"class="agregar btn btn-success " style=" float:right">AGREGAR</button>
                         <div id="cc"class="card-body p-0">
                             <table class="compra table table-hover text-nowrap">
                                 <thead class='table-success'>
                                     <tr>
-                                        <th scope="col">Numero</th>
-                                        <th scope="col">Prodcuto</th>
-                                        <th scope="col">Precio</th>
                                         
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Precio</th>
                                         <th scope="col">Laboratorio</th>
                                         <th scope="col">Presentacion</th>
                                         <th scope="col">Cantidad</th>
@@ -101,7 +100,7 @@ if ($_SESSION['tipousuario_idtipousuario'] == 1 || $_SESSION['tipousuario_idtipo
                                         <th scope="col">Eliminar</th>
                                     </tr>
                                 </thead>
-                                <tbody id="lista-compra" class='table-active'>
+                                <tbody id="lista-comprapro" class='table-active'>
                                     
                                 </tbody>
                             </table>
@@ -157,8 +156,8 @@ if ($_SESSION['tipousuario_idtipousuario'] == 1 || $_SESSION['tipousuario_idtipo
                         </div>
                         <div class="row justify-content-between">
                             
-                            <div class="col-xs-12 col-md-4">
-                                <a href="#" class="btn btn-success btn-block" id="procesar-compra">Realizar compra</a>
+                            <div class="">
+                                <a href="#" class="btn btn-success btn-block"   id="procesar-compra"  >Realizar compra</a>
                             </div>
                         </div>
                     </div>
@@ -179,4 +178,5 @@ if ($_SESSION['tipousuario_idtipousuario'] == 1 || $_SESSION['tipousuario_idtipo
     header('Location: ../index.php');
 }
 ?>
+<script src="../javas/CompraPro.js"></script>
 

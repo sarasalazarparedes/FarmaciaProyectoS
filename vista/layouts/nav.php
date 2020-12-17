@@ -118,7 +118,15 @@
               <a href="adm_venta.php" class="nav-link">
                 <i class="nav-icon fas fa-notes-medical"></i>
                 <p>
-                  Registros
+                  Registros venta
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="adm_comprados.php" class="nav-link">
+                <i class="nav-icon fas fa-notes-medical"></i>
+                <p>
+                  Registros proveedores
                 </p>
               </a>
             </li>

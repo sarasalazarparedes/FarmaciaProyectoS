@@ -6,14 +6,18 @@ class CompraPro{
         $db=new conexion();
         $this->acceso=$db->pdo;
     }
-    function Crear($proveedor,$fecha,$producto,$cantidad,$precio,$laboratorio,$presentacion,$total){
+    
+    function Crear($nombre,$fecha,$producton,$cantidad,$precio,$laboratorio,$presentacion,$total){
         $sql="INSERT INTO compra (proveedor,fecha,producto,cantidad,precio,laboratorio,presentacion,total)  values (:proveedor,:fecha,:producto,:cantidad,:precio,:laboratorio,:presentacion,:total)";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':proveedor'=>$proveedor,':fecha'=>$fecha,':producto'=>$producto,':cantidad'=>$cantidad,':precio'=>$precio,':laboratorio'=>$laboratorio,':presentacion'=>$presentacion,':total'=>$total));
+        $query->execute(array(':proveedor'=>$nombre,':fecha'=>$fecha,':producto'=>$producton,':cantidad'=>$cantidad,':precio'=>$precio,':laboratorio'=>$laboratorio,':presentacion'=>$presentacion,':total'=>$total));
+        echo 'add';
        
         
+        
+        
     }
-    function ultima_venta(){
+    function ultima_compra(){
         $sql="SELECT MAX(idcompra) as ultima_compra FROM compra";
         $query = $this->acceso->prepare($sql);
         $query->execute();
@@ -25,5 +29,12 @@ class CompraPro{
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id_compra'=>$id_compra));
 
+    }
+    function buscar(){
+        $sql="SELECT idcompra,proveedor,fecha,producto,cantidad,precio,laboratorio,presentacion,total  FROM compra ";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
     }
 }
