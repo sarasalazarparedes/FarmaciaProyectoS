@@ -97,5 +97,18 @@ class Producto{
         $this->objetos = $query->fetchall();
         return $this->objetos;
     }
+    function buscar_id($id){
+        $sql="SELECT idproducto, producto.nombre as nombre,concentrancion,adicional,precio,laboratorio.nombre as laboratorio,tipoproducto.caracteristica as tipo,
+        presentacion.tipo as presentacion,producto.avatar as avatar,laboratorio_idlaboratorio, tipoproducto_idtipoproducto,presentacion_idpresentacion
+        from producto
+        join laboratorio on laboratorio_idlaboratorio
+        join tipoproducto on tipoproducto_idtipoproducto
+        join presentacion on presentacion_idpresentacion where idproducto=:id";
+       $query = $this->acceso->prepare($sql);
+       $query->execute(array(':id'=>$id));
+       $this->objetos = $query->fetchall();
+       return $this->objetos;
+
+    }
 }
 ?>

@@ -116,6 +116,7 @@ $(document).ready(function(){
         productos.forEach(producto=>{
             id_producto= producto.id;
             $.post('../controlador/ProductoController.php',{funcion,id_producto},(response)=>{
+               // console.log(response);
                let template_carrito='';
                let json= JSON.parse(response);
                template_carrito=`
@@ -183,6 +184,7 @@ $(document).ready(function(){
         productos.forEach(producto=>{
             id_producto= producto.id;
             $.post('../controlador/ProductoController.php',{funcion,id_producto},(response)=>{
+               // console.log(response);
                let template_compra='';
                let json= JSON.parse(response);
                template_compra=`
@@ -293,6 +295,7 @@ $(document).ready(function(){
                 text: 'Necesitamos un nombre!',
                 
               })
+              
 
         }else{
             Verificar_stock().then(error=>{

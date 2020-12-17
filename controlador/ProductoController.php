@@ -89,4 +89,52 @@ if($_POST['funcion']=='borrar'){
     $id=$_POST['id'];
     $producto->borrar($id);
 }
+if($_POST['funcion']=='buscar_id'){
+    $id=$_POST['id_producto'];
+    $producto->buscar_id($id);
+
+    $json=array();
+    foreach ($producto->objetos as $objeto) {
+        $producto->obtener_stock($objeto->idproducto);
+        foreach ($producto->objetos as $obj){
+            $total=$obj->total;
+        }
+        $json[]=array(
+            'id'=>$objeto->idproducto,
+            'nombre'=>$objeto->nombre,
+            'concentracion'=>$objeto->concentrancion,
+            'adicional'=>$objeto->adicional,
+            'precio'=>$objeto->precio,
+            'stock'=>$total,
+            'laboratorio'=>$objeto->laboratorio,
+            'tipo'=>$objeto->tipo,
+            'presentacion'=>$objeto->presentacion,
+            'laboratorio_id'=>$objeto->laboratorio_idlaboratorio,
+            'tipo_id'=>$objeto->tipoproducto_idtipoproducto,
+            'presentacion_id'=>$objeto->presentacion_idpresentacion,
+            'avatar'=>'../img/'.$objeto->avatar
+            
+      );
+    }
+    $jsonstring=json_encode($json[0]);
+    echo $jsonstring;
+
+   
+}
+if($_POST['funcion']=='verificar_stock'){
+    $error=0;
+    $productos=json_decode($_POST['productos']);
+
+    foreach ($productos as $objeto) {
+        $producto->obtener_stock($objeto->id);
+        foreach ($producto->objetos as $obj) {
+            $total=$obj->total;
+        }
+        if($total>=$objeto->cantidad && $objeto->cantidad>0){
+            $error=$error+0;
+        }else{
+            $error=$error+1;
+        }
+    }
+}
 ?>

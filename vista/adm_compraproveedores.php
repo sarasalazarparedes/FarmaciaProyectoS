@@ -86,7 +86,7 @@ if ($_SESSION['tipousuario_idtipousuario'] == 1 || $_SESSION['tipousuario_idtipo
                             </div>
                         </header>
                         <button id="actualizar"class="btn btn-success">Actualizar</button>
-                        <div id="cp"class="card-body p-0">
+                        <div id="cc"class="card-body p-0">
                             <table class="compra table table-hover text-nowrap">
                                 <thead class='table-success'>
                                     <tr>
