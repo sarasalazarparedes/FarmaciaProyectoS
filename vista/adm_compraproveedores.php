@@ -43,7 +43,7 @@ if ($_SESSION['tipousuario_idtipousuario'] == 1 || $_SESSION['tipousuario_idtipo
                             <div class="logo_cp">
                                 <img src="../img/logo.png" width="100" height="100">
                             </div>
-                            <h1 class="titulo_cp">SOLICITUD DE COMPRA</h1>
+                            <h1 class="titulo_cp">Gestion Compras</h1>
                             <div class="datos_cp">
                                 <div class="form-group row">
                                     <span>Proveedor: </span>
@@ -86,79 +86,10 @@ if ($_SESSION['tipousuario_idtipousuario'] == 1 || $_SESSION['tipousuario_idtipo
                             </div>
                         </header>
                         <button id="agregar"class="agregar btn btn-success " style=" float:right">AGREGAR</button>
-                        <div id="cc"class="card-body p-0">
-                            <table class="compra table table-hover text-nowrap">
-                                <thead class='table-success'>
-                                    <tr>
-                                        
-                                        <th scope="col">Producto</th>
-                                        <th scope="col">Precio</th>
-                                        <th scope="col">Laboratorio</th>
-                                        <th scope="col">Presentacion</th>
-                                        <th scope="col">Cantidad</th>
-                                        <th scope="col">Sub Total</th>
-                                        <th scope="col">Eliminar</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="lista-comprapro" class='table-active'>
-                                    
-                                </tbody>
-                            </table>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="card card-default">
-                                        <div class="card-header">
-                                            <h3 class="card-title">
-                                            <i class="fas fa-dollar-sign"></i>
-                                            Calculo 1
-                                            </h3>
-                                        </div>
-                                        <div class="card-body">
-                                            
-                                            <div class="info-box mb-3 bg-info">
-                                                <span class="info-box-icon"><i class="fas fa-tag"></i></span>
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text text-left ">Total</span>
-                                                    <span class="info-box-number" id="total_sin_descuento">12</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card card-default">
-                                        <div class="card-header">
-                                            <h3 class="card-title">
-                                            <i class="fas fa-bullhorn"></i>
-                                            Calculo 2
-                                            </h3>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="info-box mb-3 bg-danger">
-                                                <span class="info-box-icon"><i class="fas fa-comment-dollar"></i></span>
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text text-left ">DESCUENTO</span>
-                                                    <input id="descuento"type="number" min="1" placeholder="Ingrese descuento" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="info-box mb-3 bg-info">
-                                                <span class="info-box-icon"><i class="ion ion-ios-cart-outline"></i></span>
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text text-left ">TOTAL</span>
-                                                    <span class="info-box-number" id="total">12</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
+                       
                         <div class="row justify-content-between">
                             
-                            <div class="">
-                                <a href="#" class="btn btn-success btn-block"   id="procesar-compra"  >Realizar compra</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

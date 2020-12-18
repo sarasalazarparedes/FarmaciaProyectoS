@@ -195,11 +195,13 @@ $(document).ready(function(){
           })
     })
     $(document).on('click','.editar',(e)=>{
+        buscar_lab();
         const elemento=$(this)[0].activeElement.parentElement.parentElement;
         const id=$(elemento).attr('labId');
         const nombre=$(elemento).attr('labNombre');
         $('#id_editar_lab').val(id);
         $('#nombre-laboratorio').val(nombre);
         edit=true;
+        buscar_lab();
     })
 });

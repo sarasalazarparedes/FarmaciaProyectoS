@@ -18,7 +18,7 @@ if ($_SESSION['tipousuario_idtipousuario'] == 1 || $_SESSION['tipousuario_idtipo
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Gestion Ventas</h1>
+            <h1>Gestion compras Proveedor</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

@@ -299,6 +299,7 @@ $(document).ready(function(){
 
         }else{
             Verificar_stock().then(error=>{
+                console.log(error);
                 Registrar_compra(nombre,dni);
                 if(error==0){
                     Swal.fire({
@@ -317,8 +318,10 @@ $(document).ready(function(){
                         title: 'Oops...',
                         text: 'Hay conflicto en el stock de algun producto!',
                         
-                      })
-
+                      }).then(function(){
+                        EliminarLS();
+                      location.href ='../vista/adm_catalogo.php'
+                  })
                 }
             });
            

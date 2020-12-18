@@ -43,28 +43,7 @@ $(document).ready(function(){
                   </div>
                   <div class="card-footer">
                     <div class="text-right">`;
-                if (tipo_us == 3) {
-                  if (us.tipo_us != 3) {
-                    template += `
-                        <button class="borrar-usuario btn btn-danger mr-1" type="button" data-toggle="modal" data-target="#confirmar">
-                           <i class="fas fa-window-close mr-1"></i>Eliminar
-                       </button>
-                        
-                        `;
-                  }
-  
-                } else {
-                  if (tipo_us == 1 && us.tipo_us != 1 && us.tipo_us != 3) {
-                    template += `
-                        <button class="borrar-usuario btn btn-danger" type="button" data-toggle="modal" data-target="#confirmar">
-                           <i class="fas fa-window-close mr-1"></i>Eliminar
-                       </button>
-                        
-                        `;
-  
-                  }
-  
-                }
+                
                 template += `
                   
                     </div>
@@ -121,16 +100,7 @@ $(document).ready(function(){
 
       });
 
-      $(document).on('click','.borrar-usuario',(e)=>{
-        const elemento= $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
-        const id=$(elemento).attr('usuarioid');
-        //console.log(id);
-        funcion='borrar_usuario';
-        $('#id_user').val(id);
-        $('#funcion').val(funcion);
-
-
-      });
+      
       $('#form-confirmar').submit(e=>{
         let pass=$('#oldpass').val();
         let id_usuario=$('#id_user').val();

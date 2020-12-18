@@ -136,5 +136,6 @@ if($_POST['funcion']=='verificar_stock'){
             $error=$error+1;
         }
     }
+    echo $error;
 }
 ?>

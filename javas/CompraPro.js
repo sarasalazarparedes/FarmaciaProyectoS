@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    Recuperar();
     const subtotales=0;
    calcularTotal();
     $(document).on('click','#agregar',(e)=>{
@@ -16,30 +17,80 @@ $(document).ready(function(){
         //productop
         
         console.log( nombre +' '+producto+' '+cantidad+' '+precio+' '+laboratorio+' '+presentacion+' '+total);
-        $.post('../controlador/CompraProController.php',{funcion,nombre,producto,cantidad,precio,laboratorio,presentacion,total},(response)=>{
-            console.log(response);
-            let template_co='';
-               let json= JSON.parse(response);
-               
-               template_co=`
-               <tr >
-               <td>${json.nombre}</td>
-               <td>${json.producto}</td>
-               <td>${json.cantidad}</td>
-               <td>${json.precio}</td>
-               <td>${json.laboratorio}</td>
-               <td>${json.presentacion}</td>
-               <td>${json.total}</td>
-               <td><button class="borrar-producto btn btn-danger"><i class="fas fa-times-circle"></i></button></td>
-  
-          </tr>
-          `;
-          $('#lista-comprapro').append(template_co);
+        funcion="ver";
+        $.post('../controlador//CompraProController.php',{funcion,nombre,producto,cantidad,precio,laboratorio,presentacion,total},(response)=>{
+            let registros = JSON.parse(response);
+            let template="";
+            $('#registros').html(template);
+            registros.forEach(registro => {
+                template+=`
+                <tr>
+                    <td>${registro.nombre}</td>
+                    <td>${registro.producto}</td>
+                    <td>${registro.cantidad}</td>
+                   
+                    <td>${registro.precio}</td>
+                    <td>${registro.laboratorio}</td>
+                    <td>${registro.presentacion}</td>
+                    <td>${registro.total}</td>
+                    
+ 
+                
+                
+                </tr>
+                
+                `;
+                $('#lista-comprapro').append(template);
+                
+            });
+ 
+         
         });  
           e.preventDefault();
+          
         //Contar_producto()
   
     })
+    function Recuperar() {
+        let id =$('#codigo_venta').html(datos.idcompra);
+        funcion="ver";
+        let datos;
+        let id= datos.idcompra;
+        funcion="ver";
+        
+        $.post('../modelo//CompraProducto.php',{funcion,id},(response)=>{
+           let registros = JSON.parse(response);
+           let template="";
+           $('#registros').html(template);
+           registros.forEach(registro => {
+               template+=`
+               <tr>
+                   <td>${registro.cantidad}</td>
+                   <td>${registro.precio}</td>
+                   <td>${registro.producto}</td>
+                   <td>${registro.concentrancion}</td>
+                   <td>${registro.adicional}</td>
+                   <td>${registro.laboratorio}</td>
+                   <td>${registro.presentacion}</td>
+                   <td>${registro.tipo}</td>
+                   <td>${registro.subtotal}</td>
+
+               
+               
+               </tr>
+               
+               `;
+               $('#registros').html(template);
+               
+           });
+
+        })
+
+
+    }
+ 
+        
+    
     
     
     $('#cc').keyup((e)=>{

@@ -135,11 +135,7 @@ if($_POST['funcion']=='crear_usuario'){
     
 
 }
-if($_POST['funcion']=='borrar-usuario'){
-    $pass=$_POST['pass'];
-    $id_borrado=$_POST['usuario'];
-    $us->borrar($pass,$id_borrado,$usuario);
-}
+
     
     
 

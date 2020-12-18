@@ -52,7 +52,7 @@ if ($_SESSION['tipousuario_idtipousuario'] == 1 || $_SESSION['tipousuario_idtipo
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <span>DNI: </span>
+                                    <span>NIT: </span>
                                     <div class="input-group-append col-md-6">
                                         <input type="number" class="form-control" id="dni" placeholder="Ingresa DNI">
                                     </div>
@@ -77,7 +77,7 @@ if ($_SESSION['tipousuario_idtipousuario'] == 1 || $_SESSION['tipousuario_idtipo
                                         <th scope="col">Presentacion</th>
                                         <th scope="col">Cantidad</th>
                                         <th scope="col">Sub Total</th>
-                                        <th scope="col">Eliminar</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody id="lista-compra" class='table-active'>
