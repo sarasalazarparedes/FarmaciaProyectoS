@@ -318,10 +318,7 @@ $(document).ready(function(){
                         title: 'Oops...',
                         text: 'Hay conflicto en el stock de algun producto!',
                         
-                      }).then(function(){
-                        EliminarLS();
-                      location.href ='../vista/adm_catalogo.php'
-                  })
+                      })
                 }
             });
            
